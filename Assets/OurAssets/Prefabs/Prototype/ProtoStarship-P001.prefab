@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2737407672450256630}
   - component: {fileID: 6777356370901411509}
   - component: {fileID: 8826125111435335170}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ProtoStarship-P001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe4b97fdbaf98048b405c3e6e98fd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runSpeed: 10
+  camera: {fileID: 0}
 --- !u!1 &6264455190982672591
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +123,7 @@ GameObject:
   - component: {fileID: 7030327548811063595}
   - component: {fileID: 7045724893104643130}
   - component: {fileID: 4231281090478437934}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
