@@ -6,10 +6,30 @@ using UnityEngine.UI;
 public class Popup : MonoBehaviour
 {
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private Image _outerImage;
     [SerializeField] private Image _contentsImage;
+
+    private Camera _mainCamera;
 
     private void Start()
     {
+        _mainCamera = GameManager.Instance.MainCamera;
+        _canvas.worldCamera = _mainCamera;
+
+        // Start with the window minimized
+        // TODO
+    }
+
+    private void Update()
+    {
+        // Always look at the camera
+        // transform.LookAt(_mainCamera.transform);
+    }
+
+    public void Initialize(Color color/*, Vector2 size, Vector3 position*/)
+    {
+        _outerImage.color = color;
+
         OpenPopup();
     }
 

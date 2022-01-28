@@ -8,8 +8,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PopupSpawner _popupSpawner = null;
     [SerializeField] private EnemySpawner _enemySpawner = null;
 
+    [Header("References")]
+    [SerializeField] private Camera _mainCamera = null;
+
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
+
+    public Camera MainCamera { get => _mainCamera; }
 
     private void Awake()
     {
@@ -19,13 +24,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        _instance = this;
         DontDestroyOnLoad(gameObject);
         // End of singleton implementation
     }
 
     private void Start()
     {
-        _popupSpawner.SetShouldSpawn(true);
-        _enemySpawner.SetShouldSpawn(true);
+        // _popupSpawner.SetShouldSpawn(true);
+        // _enemySpawner.SetShouldSpawn(true);
     }
 }
