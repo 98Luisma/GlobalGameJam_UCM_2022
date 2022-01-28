@@ -21,6 +21,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    ///<summary>
+    /// Instantiates a new enemy.
+    ///</summary>
     private void SpawnEnemy()
     {
 

@@ -11,10 +11,18 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private Camera _mainCamera = null;
 
+    [Header("Map")]
+    [SerializeField] private float _gameAreaWidth = 10f;
+    [SerializeField] private float _gameAreaHeight = 10f;
+
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
 
+#region Getters
     public Camera MainCamera { get => _mainCamera; }
+    public float GameAreaWidth { get => _gameAreaWidth; }
+    public float GameAreaHeight { get => _gameAreaHeight; }
+#endregion
 
     private void Awake()
     {
@@ -31,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // _popupSpawner.SetShouldSpawn(true);
+        _popupSpawner.SetShouldSpawn(true);
         // _enemySpawner.SetShouldSpawn(true);
     }
 }

@@ -11,6 +11,8 @@ public class Popup : MonoBehaviour
 
     private Camera _mainCamera;
 
+    public event System.Action<Popup> OnPopupDestroyed;
+
     private void Start()
     {
         _mainCamera = GameManager.Instance.MainCamera;
@@ -20,13 +22,22 @@ public class Popup : MonoBehaviour
         // TODO
     }
 
+    private void OnDestroy()
+    {
+        OnPopupDestroyed?.Invoke(this);
+    }
+
     public void Initialize(Color color/*, Vector2 size, Vector3 position*/)
     {
+        color.a = 1;
         _outerImage.color = color;
 
         OpenPopup();
     }
 
+    ///<summary>
+    /// Plays an open animation.
+    ///</summary>
     private void OpenPopup()
     {
         StartCoroutine(InnerCoroutine());
@@ -34,10 +45,14 @@ public class Popup : MonoBehaviour
         // Definition of the Coroutine called above
         IEnumerator InnerCoroutine()
         {
+            // TODO
             yield return null;
         }
     }
 
+    ///<summary>
+    /// Plays a close animation and destroys the Object.
+    ///</summary>
     private void ClosePopup()
     {
         StopAllCoroutines();
@@ -46,7 +61,11 @@ public class Popup : MonoBehaviour
         // Definition of the Coroutine called above
         IEnumerator InnerCoroutine()
         {
+            // TODO
             yield return null;
+
+            // When finished
+            Destroy(gameObject);
         }
     }
 
