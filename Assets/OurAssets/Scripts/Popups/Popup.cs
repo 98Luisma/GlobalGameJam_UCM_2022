@@ -20,12 +20,6 @@ public class Popup : MonoBehaviour
         // TODO
     }
 
-    private void Update()
-    {
-        // Always look at the camera
-        // transform.LookAt(_mainCamera.transform);
-    }
-
     public void Initialize(Color color/*, Vector2 size, Vector3 position*/)
     {
         _outerImage.color = color;
@@ -54,7 +48,6 @@ public class Popup : MonoBehaviour
         {
             yield return null;
         }
-
     }
 
     public void Btn_Close() => ClosePopup();
