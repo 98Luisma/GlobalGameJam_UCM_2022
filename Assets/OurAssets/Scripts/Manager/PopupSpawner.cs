@@ -43,14 +43,13 @@ public class PopupSpawner : MonoBehaviour
         Color popupColor = _popupColors[Random.Range(0, _popupColors.Length)];
 
         // Select a position
-        Vector3 spawnPosition = spawnPosition = FindSpawnPosition();
+        Vector3 spawnPosition = FindSpawnPosition();
 
         Popup newPopup = Instantiate<Popup>(_popupBasePrefab, spawnPosition, Quaternion.identity);
         newPopup.Initialize(popupColor);
 
-        ++_spawnedPopups;
-
         // Keep track of this popup util it is destroyed
+        ++_spawnedPopups;
         newPopup.OnPopupDestroyed += PopupDespawned;
     }
 
@@ -63,20 +62,17 @@ public class PopupSpawner : MonoBehaviour
         bool spawnOnCursor = Random.Range(0f, 1f) < _spawnOnCursorProbability;
         if (spawnOnCursor)
         {
-            Camera cam = GameManager.Instance.MainCamera;
+            Camera mainCamera = GameManager.Instance.MainCamera;
             Vector3 mousePos = Input.mousePosition;
-            mousePos.z = cam.transform.position.y - _spawnPositionY;
-            spawnPos = cam.ScreenToWorldPoint(mousePos);
-            spawnPos.y = _spawnPositionY;
+            mousePos.z = mainCamera.transform.position.y - _spawnPositionY;
+            spawnPos = mainCamera.ScreenToWorldPoint(mousePos);
         }
         else
         {
-            // Find a position inside the bounds of the game area
-            float areaWidth = GameManager.Instance.GameAreaWidth;
-            float areaHeight = GameManager.Instance.GameAreaHeight;
-            float posX = Random.Range(-areaWidth, areaWidth);
-            float posZ = Random.Range(-areaHeight, areaHeight);
-            spawnPos = new Vector3(posX, _spawnPositionY, posZ);
+            // Find a random position visible by the camera
+            Camera mainCamera = GameManager.Instance.MainCamera;
+            float zDepth = mainCamera.transform.position.y - _spawnPositionY;
+            spawnPos = GameManager.Instance.MainCamera.RandomPointInFrustum(zDepth);
         }
 
         // Add a tiny variation on the Y axis to prevent overlap
