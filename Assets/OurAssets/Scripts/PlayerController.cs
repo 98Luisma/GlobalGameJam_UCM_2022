@@ -30,7 +30,10 @@ public class PlayerController : MonoBehaviour
             RaycastHit rayCast;
             if (Physics.Raycast(ray, out rayCast, 25))
             {
-                Debug.Log("Raycast hecho");
+                if (rayCast.collider.CompareTag("RayCastPlane"))
+                {
+                    Debug.Log("Hit con el plano");
+                }
             }
 
         }
