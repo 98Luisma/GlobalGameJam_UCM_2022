@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 2;
-    [SerializeField] private bool _lookTowardsMoveDirection = false;
+    [SerializeField] private int _pointsAwardedOnDeath = 100;
     [SerializeField] EnemyTurret[] _turrets;
-    [Space]
     [SerializeField] private ParticleSystem _deathParticles = null;
+    [SerializeField] private bool _lookTowardsMoveDirection = false;
 
     private int _currentHealth;
     private bool _hasEnteredView = false;
@@ -66,7 +66,8 @@ public abstract class Enemy : MonoBehaviour
     ///</summary>
     private void Die()
     {
-        // TODO: Add points
+        // Add points to the manager
+        // GameManager.Instance.AddMoney(_pointsAwardedOnDeath);
 
         if (_deathParticles)
         {

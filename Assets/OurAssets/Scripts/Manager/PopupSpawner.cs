@@ -6,14 +6,12 @@ public class PopupSpawner : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private float _spawnPeriod = 1f;
-    [SerializeField] private Popup _popupBasePrefab;
+    [SerializeField] private Popup[] _popupPrefabs;
     [SerializeField] private Color[] _popupColors;
     [Header("Spawn")]
     [SerializeField] private float _spawnPositionY = 5f;
     [SerializeField] private int _maxSimultaneousPopups = 10;
     [SerializeField, Range(0, 1)] private float _spawnOnCursorProbability = 0.2f;
-    [SerializeField] private Vector2 _widthMinMax = new Vector2(1f, 3f);
-    [SerializeField] private Vector2 _heightMinMax = new Vector2(1f, 3f);
     [SerializeField] private int _maxSpawnAttempts = 5;
 
     private bool _shouldSpawn = false;
@@ -42,13 +40,11 @@ public class PopupSpawner : MonoBehaviour
     ///</summary>
     private void SpawnPopup()
     {
+        // Select a random prefab
+        Popup popupPrefab = _popupPrefabs[Random.Range(0, _popupPrefabs.Length)];
+
         // Select a random color
         Color popupColor = _popupColors[Random.Range(0, _popupColors.Length)];
-
-        // Select a random size
-        float popupWidth = Random.Range(_widthMinMax.x, _widthMinMax.y);
-        float popupHeight = Random.Range(_heightMinMax.x, _heightMinMax.y);
-        Vector2 popupSize = new Vector2(popupWidth, popupHeight);
 
         // Select a position
         Vector3 spawnPosition = Vector3.zero; ;
@@ -66,16 +62,16 @@ public class PopupSpawner : MonoBehaviour
             spawnPosition = FindSpawnPosition();
 
             Vector3 testOffset = new Vector3(
-                Mathf.Sign(spawnPosition.x) * popupWidth * 0.75f,
+                Mathf.Sign(spawnPosition.x) * popupPrefab.GetWidth() * 0.75f,
                 0f,
-                Mathf.Sign(spawnPosition.z) * popupHeight * 0.75f
+                Mathf.Sign(spawnPosition.z) * popupPrefab.GetHeight() * 0.75f
             );
 
             // Is the popup overlapping another popup?
             Collider[] detectedColl = new Collider[1];
             Physics.OverlapBoxNonAlloc(
                 spawnPosition,
-                new Vector3(popupWidth * 0.75f, 0.05f, popupHeight * 0.75f),
+                new Vector3(popupPrefab.GetWidth() * 0.75f, 0.05f, popupPrefab.GetHeight() * 0.75f),
                 detectedColl,
                 Quaternion.identity,
                 LayerMask.GetMask("Popup")
@@ -94,8 +90,8 @@ public class PopupSpawner : MonoBehaviour
             }
         }
 
-        Popup newPopup = Instantiate<Popup>(_popupBasePrefab, spawnPosition, Quaternion.identity);
-        newPopup.Initialize(popupColor, popupSize);
+        Popup newPopup = Instantiate<Popup>(popupPrefab, spawnPosition, Quaternion.identity);
+        newPopup.Initialize(popupColor);
 
         // Keep track of this popup util it is destroyed
         ++_spawnedPopups;

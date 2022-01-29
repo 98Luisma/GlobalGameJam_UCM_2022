@@ -47,8 +47,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // _popupSpawner.SetShouldSpawn(true);
+        _popupSpawner.SetShouldSpawn(true);
         // _enemySpawner.SetShouldSpawn(true);
+
         life = 5;
         money = 1000;
         moneyUI.text = money.ToString();

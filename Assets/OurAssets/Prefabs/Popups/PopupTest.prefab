@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 2561869458001788757}
   - component: {fileID: 2561869458001788756}
   m_Layer: 8
-  m_Name: PopupBase
+  m_Name: PopupTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,8 +463,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 2561869456984365741}
   _outerImage: {fileID: 2561869458328656611}
-  _contentsImage: {fileID: 2561869456994061336}
   _collider: {fileID: 2208628206243922012}
+  _canvasParent: {fileID: 2561869457485468608}
+  _openTime: 0.2
+  _closeTime: 0.2
+  _elasticity: 2
 --- !u!1 &2561869458328656609
 GameObject:
   m_ObjectHideFlags: 0

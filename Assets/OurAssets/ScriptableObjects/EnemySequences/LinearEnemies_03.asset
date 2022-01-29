@@ -15,6 +15,6 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 838136927437865270, guid: 82b8c7409d50aae4fb15ece8f801d5f1, type: 3}
   _amount: 3
   _delaySeconds: 1
-  _initialDirection: {x: 1, y: -0.5}
+  _initialDirection: {x: -1, y: 0.5}
   _normalizedSpawnPosX: 1
   _normalizedSpawnPosZ: 0.4
