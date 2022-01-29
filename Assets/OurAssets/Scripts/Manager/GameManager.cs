@@ -10,12 +10,14 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Camera _mainCamera = null;
+    [SerializeField] private PlayerController _player = null;
 
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
 
 #region Getters
     public Camera MainCamera { get => _mainCamera; }
+    public PlayerController Player { get => _player; }
 #endregion
 
     private void Awake()
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _popupSpawner.SetShouldSpawn(true);
+        // _popupSpawner.SetShouldSpawn(true);
         // _enemySpawner.SetShouldSpawn(true);
     }
 }
