@@ -111,3 +111,4 @@ MonoBehaviour:
   _speed: 15
   _damage: 1
   _maxLifetime: 10
+  _explosionParticles: {fileID: 4794043405585894027, guid: 37138c0c33167b04fa1fb90b7f5a794f, type: 3}

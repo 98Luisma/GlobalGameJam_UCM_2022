@@ -11,6 +11,7 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField] private float _speed = 5f;
     [SerializeField] private int _damage = 1;
     [SerializeField] private float _maxLifetime = 10f;
+    [SerializeField] private ParticleSystem _explosionParticles = null;
 
     private Vector3 _moveDir;
 
@@ -41,7 +42,9 @@ public class EnemyBullet : MonoBehaviour
     {
         GameManager.Instance.addLife(-_damage);
 
-        // TODO: Play an explosion effect (particles & sound)
+        Instantiate(_explosionParticles, transform.position, Quaternion.identity);
+
+        // TODO: Play a sound
 
         Destroy(gameObject);
     }
