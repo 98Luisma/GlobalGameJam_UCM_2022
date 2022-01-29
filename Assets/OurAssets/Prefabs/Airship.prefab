@@ -106,6 +106,6 @@ MonoBehaviour:
   projectile: {fileID: 5642380341387465963, guid: 3d107bd2d980e9d4d88381f0864aca32, type: 3}
   layerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   runSpeed: 10
   camera: {fileID: 0}

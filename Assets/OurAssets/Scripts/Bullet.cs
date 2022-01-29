@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     Vector3 shootPoint;
     float shootRadius;
     float speed = 15f;
+    float upSpeed = 5f;
+    float maxDistance;
 
     [SerializeField] private ParticleSystem explosion;
 
@@ -15,6 +17,7 @@ public class Bullet : MonoBehaviour
         shootPoint = shootP;
         shootRadius = shootR;
         transform.LookAt(shootPoint);
+        maxDistance = Vector3.SqrMagnitude(shootPoint - transform.position);
     }
 
     // Start is called before the first frame update
@@ -45,7 +48,14 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         } else
         {
-        transform.position = Vector3.MoveTowards(transform.position, shootPoint, speed * Time.deltaTime);
+            if (Vector3.SqrMagnitude(shootPoint - transform.position) < maxDistance/2 * maxDistance/2)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y + (upSpeed * Time.deltaTime), transform.position.z);
+            } else
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y - (upSpeed * Time.deltaTime), transform.position.z);
+            }
+            transform.position = Vector3.MoveTowards(transform.position, shootPoint, speed * Time.deltaTime);
         }
     }
 

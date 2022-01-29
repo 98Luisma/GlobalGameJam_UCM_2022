@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 currentHitPosition;
 
-    float offset = 1f;
+    float offset = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,10 @@ public class PlayerController : MonoBehaviour
             RaycastHit rayCast;
             if (Physics.Raycast(ray, out rayCast, 25, layerMask))
             {
+                if (rayCast.collider.CompareTag("RayCastPlane"))
+                {
                 Instantiate(projectile, transform.position, Quaternion.identity).setupBullet(rayCast.point, shootRadius);
+                }
             }
         }
     }

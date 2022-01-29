@@ -407,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6127214726805618069, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: _spawnPositionY
-      value: 18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6127214726805618070, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: _mainCamera
