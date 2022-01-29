@@ -9,11 +9,15 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private int _moneyAwardedOnDeath = 100;
     [SerializeField] EnemyTurret[] _turrets;
     [SerializeField] private ParticleSystem _deathParticles = null;
-    [SerializeField] private bool _lookTowardsMoveDirection = false;
 
     private int _currentHealth;
     private bool _hasEnteredView = false;
+
     protected Vector3 _initDirection = Vector3.right;
+    protected Vector3 _initPosition;
+    protected float _timeSinceCreation = 0f;
+
+    public event System.Action OnEnemyDestroyed;
 
     private void Awake()
     {
@@ -41,6 +45,8 @@ public abstract class Enemy : MonoBehaviour
             }
         }
 
+        _timeSinceCreation += Time.deltaTime;
+
         // This is overwritten by child classes
         MoveEnemy(Time.deltaTime);
     }
@@ -48,6 +54,7 @@ public abstract class Enemy : MonoBehaviour
     public void Initialize(Vector3 initDirection)
     {
         _initDirection = initDirection;
+        _initPosition = transform.position;
     }
 
     ///<summary>
@@ -71,6 +78,9 @@ public abstract class Enemy : MonoBehaviour
         GameManager.Instance.AddScore(_pointsAwardedOnDeath);
         GameManager.Instance.AddMoney(_moneyAwardedOnDeath);
 
+        // Notify other objects
+        OnEnemyDestroyed?.Invoke();
+
         if (_deathParticles)
         {
             Instantiate(_deathParticles, transform.position, Quaternion.identity);
@@ -79,7 +89,7 @@ public abstract class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void StartShooting()
+    protected void StartShooting()
     {
         foreach (EnemyTurret turret in _turrets)
         {
@@ -87,7 +97,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    private void StopShooting()
+    protected void StopShooting()
     {
         foreach (EnemyTurret turret in _turrets)
         {
@@ -98,6 +108,7 @@ public abstract class Enemy : MonoBehaviour
     private void OnEnterScreen()
     {
         StartShooting();
+        StartEnemyLogic();
     }
 
     private void OnExitScreen()
@@ -107,7 +118,12 @@ public abstract class Enemy : MonoBehaviour
     }
 
     ///<summary>
+    /// Called after the enemy enters the screen.
+    ///</summary>
+    protected virtual void StartEnemyLogic(){}
+
+    ///<summary>
     /// Called on Update. Write the enemy trajectory here.
     ///</summary>
-    protected abstract void MoveEnemy(float dt);
+    protected virtual void MoveEnemy(float dt){}
 }

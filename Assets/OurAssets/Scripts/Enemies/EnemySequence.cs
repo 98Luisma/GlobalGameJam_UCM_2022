@@ -11,7 +11,7 @@ public class EnemySequence : ScriptableObject
     [SerializeField] private Enemy _enemyPrefab = null;
     [SerializeField] private int _amount = 3;
     [SerializeField] private float _delaySeconds = 1f;
-    [SerializeField] private Vector2 _initialDirection = new Vector2(0f, 1f);
+    [SerializeField] private Vector2 _initialDirection = new Vector2(0f, -1f);
     [SerializeField, Range(0, 1f)] private float _normalizedSpawnPosX = 0.5f;
     [SerializeField, Range(0, 1f)] private float _normalizedSpawnPosZ = 1f;
 

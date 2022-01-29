@@ -107,6 +107,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cdd61f954ebc3f0409d278f61fe8b521, type: 2}
   - {fileID: 11400000, guid: 021c340f315a5db4a969cea45d25cc76, type: 2}
   - {fileID: 11400000, guid: 7d48ae7fd1819ed46be59c74ee271dad, type: 2}
+  _bossSequence: {fileID: 11400000, guid: 863340d26ca4c9a4b9840031575fa657, type: 2}
+  DEBUG_START_WITH_BOSS_BATTLE: 0
 --- !u!114 &6589026190599434471
 MonoBehaviour:
   m_ObjectHideFlags: 0

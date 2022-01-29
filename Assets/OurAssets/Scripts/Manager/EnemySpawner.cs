@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("Spawn")]
     [SerializeField] private float _spawnPositionY = 0f;
     [SerializeField] private float _spawnSequencePeriod = 5f;
     [SerializeField] private float _extraOffset = 3f;
-    [Space]
+    [Header("Enemy references")]
     [SerializeField] private EnemyBullet _enemyBulletPrefab;
     [SerializeField] private EnemySequence[] _enemySequences;
+    [SerializeField] private EnemySequence _bossSequence;
+    [Header("Debug")]
+    [SerializeField] private bool DEBUG_START_WITH_BOSS_BATTLE = false;
 
     private bool _shouldSpawn = false;
     private float _spawnTimer = 0f;
     private Vector3[] _screenCorners = new Vector3[4];
     private ObjectPool<EnemyBullet> _enemyBulletPool;
+
+    private bool _isInBossBattle = false;
+    private Enemy _instantiatedBoss = null;
 
     private void Awake()
     {
@@ -32,16 +39,25 @@ public class EnemySpawner : MonoBehaviour
         {
             _screenCorners[i] = mainCamera.transform.TransformPoint(_screenCorners[i]);
         }
+
+        if (DEBUG_START_WITH_BOSS_BATTLE)
+        {
+            StartBossBattle();
+        }
     }
 
     private void Update()
     {
+        // Early returns
         if (!_shouldSpawn) return;
+        if (_isInBossBattle) return;
         
         _spawnTimer += Time.deltaTime;
         if (_spawnTimer >= _spawnSequencePeriod)
         {
-            StartCoroutine(SpawnEnemySequence());
+            // Spawn a random sequence
+            EnemySequence sequence = _enemySequences[Random.Range(0, _enemySequences.Length)];
+            StartCoroutine(SpawnEnemySequence(sequence));
             _spawnTimer = 0f;
         }
     }
@@ -49,11 +65,8 @@ public class EnemySpawner : MonoBehaviour
     ///<summary>
     /// Instantiates the enemies from a new sequence.
     ///</summary>
-    private IEnumerator SpawnEnemySequence()
+    private IEnumerator SpawnEnemySequence(EnemySequence sequence)
     {
-        // Get a random sequence to spawn
-        EnemySequence sequence = _enemySequences[Random.Range(0, _enemySequences.Length)];
-
         // All enemies will spawn with the same properties
         Vector3 spawnPos = GetSpawnPos(sequence.NormalizedSpawnPosX, sequence.NormalizedSpawnPosZ);
 
@@ -92,4 +105,23 @@ public class EnemySpawner : MonoBehaviour
     public void SetShouldSpawn(bool value) => _shouldSpawn = value;
 
     public EnemyBullet RequestEnemyBullet() => _enemyBulletPool.RequestObject();
+
+    public void StartBossBattle()
+    {
+        _isInBossBattle = true;
+        StartCoroutine(SpawnEnemySequence(_bossSequence));
+
+        // Find the boss (probably very inneficient)
+        _instantiatedBoss = FindObjectOfType<BossEnemy>();
+        _instantiatedBoss.OnEnemyDestroyed += EndBossBattle;
+    }
+
+    private void EndBossBattle()
+    {
+        _isInBossBattle = false;
+        if (_instantiatedBoss)
+        {
+            _instantiatedBoss.OnEnemyDestroyed -= EndBossBattle;
+        }
+    }
 }
