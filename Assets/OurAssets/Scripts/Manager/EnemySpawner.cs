@@ -8,11 +8,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _spawnSequencePeriod = 5f;
     [SerializeField] private float _extraOffset = 3f;
     [Space]
+    [SerializeField] private EnemyBullet _enemyBulletPrefab;
     [SerializeField] private EnemySequence[] _enemySequences;
 
     private bool _shouldSpawn = false;
     private float _spawnTimer = 0f;
     private Vector3[] _screenCorners = new Vector3[4];
+    private ObjectPool<EnemyBullet> _enemyBulletPool;
+
+    private void Awake()
+    {
+        _enemyBulletPool = new ObjectPool<EnemyBullet>(_enemyBulletPrefab, 60);
+    }
 
     private void Start()
     {
@@ -83,4 +90,6 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void SetShouldSpawn(bool value) => _shouldSpawn = value;
+
+    public EnemyBullet RequestEnemyBullet() => _enemyBulletPool.RequestObject();
 }

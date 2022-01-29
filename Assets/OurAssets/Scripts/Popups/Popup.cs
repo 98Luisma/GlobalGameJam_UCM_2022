@@ -112,8 +112,8 @@ public class Popup : MonoBehaviour
     {
         if (!_isClosing)
         {
-            GameManager.Instance.addMoney(_givenMoney);
-            GameManager.Instance.addLife(_givenLife);
+            GameManager.Instance.AddMoney(_givenMoney);
+            GameManager.Instance.AddLife(_givenLife);
             ClosePopup();
         }
     }

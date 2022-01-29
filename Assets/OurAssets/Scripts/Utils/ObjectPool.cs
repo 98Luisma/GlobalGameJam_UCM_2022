@@ -17,6 +17,7 @@ public class ObjectPool<T> where T : Component
         {
             T newObj = GameObject.Instantiate(prefab);
             newObj.gameObject.SetActive(false);
+            _pooledObjects.Add(newObj);
         }
     }
 
@@ -35,6 +36,13 @@ public class ObjectPool<T> where T : Component
         // If no object was found, add a new one
         T newObj = GameObject.Instantiate(_referencePrefab);
         _pooledObjects.Add(newObj);
+        return newObj;
+    }
+
+    public T RequestObject(Vector3 position)
+    {
+        T newObj = RequestObject();
+        newObj.transform.position = position;
         return newObj;
     }
 }

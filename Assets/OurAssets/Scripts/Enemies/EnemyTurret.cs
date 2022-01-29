@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyTurret : MonoBehaviour
 {
     [Header("Shooting")]
-    [SerializeField] private EnemyBullet _bulletPrefab;
     [SerializeField] private float _period = 1f;
     [Header("Visuals")]
     [SerializeField] private bool _lockOnPlayer = true;
@@ -48,8 +47,9 @@ public class EnemyTurret : MonoBehaviour
         Vector3 shootDir = _lockOnPlayer
             ? Vector3.Normalize(_playerTransform.position - _enemyTransform.position)
             : _enemyTransform.forward;
-            
-        EnemyBullet newBullet = Instantiate(_bulletPrefab, _enemyTransform.position, Quaternion.identity);
+    
+        EnemyBullet newBullet = GameManager.Instance.RequestEnemyBullet();
+        newBullet.transform.position = _enemyTransform.position;
         newBullet.Shoot(shootDir);
     }
 
