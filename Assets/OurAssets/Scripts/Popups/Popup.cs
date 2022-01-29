@@ -14,6 +14,9 @@ public class Popup : MonoBehaviour
     [SerializeField] private float _openTime = 0.2f;
     [SerializeField] private float _closeTime = 0.2f;
     [SerializeField] private float _elasticity = 2f;
+    [Header("Action")]
+    [SerializeField] private int _givenLife = 0;
+    [SerializeField] private int _givenMoney = 0;
 
     private Camera _mainCamera;
 
@@ -86,6 +89,13 @@ public class Popup : MonoBehaviour
     }
 
     public void Btn_Close() => ClosePopup();
+
+    public void Btn_Buy()
+    {
+        GameManager.Instance.addMoney(_givenMoney);
+        GameManager.Instance.addLife(_givenLife);
+        ClosePopup();
+    }
 
     public float GetWidth() => _collider.size.x;
 

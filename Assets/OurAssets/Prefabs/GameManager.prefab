@@ -69,6 +69,7 @@ MonoBehaviour:
   _spawnPeriod: 1
   _popupPrefabs:
   - {fileID: 2561869458001788756, guid: dadd748fca09798449d2069f769a09b6, type: 3}
+  - {fileID: 2561869458001788756, guid: 5c2435a6014b1354a9786ea79b3527d0, type: 3}
   _popupColors:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0, g: 1, b: 0, a: 0}
