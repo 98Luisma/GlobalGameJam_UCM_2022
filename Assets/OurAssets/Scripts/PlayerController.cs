@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Bullet projectile;
+    [SerializeField] private LayerMask layerMask;
 
     public float runSpeed = 10f;
     public Camera camera;
@@ -35,14 +36,9 @@ public class PlayerController : MonoBehaviour
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction * 25, Color.yellow, 5);
             RaycastHit rayCast;
-            if (Physics.Raycast(ray, out rayCast, 25))
+            if (Physics.Raycast(ray, out rayCast, 25, layerMask))
             {
-                if (rayCast.collider.CompareTag("RayCastPlane"))
-                {
-
-                    Instantiate(projectile, transform.position, Quaternion.identity).setupBullet(rayCast.point, shootRadius);
-
-                }
+                Instantiate(projectile, transform.position, Quaternion.identity).setupBullet(rayCast.point, shootRadius);
             }
         }
     }
