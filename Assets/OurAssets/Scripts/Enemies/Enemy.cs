@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 2;
+    [SerializeField] private bool _lookTowardsMoveDirection = false;
     [SerializeField] EnemyTurret[] _turrets;
     [Space]
     [SerializeField] private ParticleSystem _deathParticles = null;
@@ -16,10 +17,12 @@ public abstract class Enemy : MonoBehaviour
     private void Awake()
     {
         _currentHealth = _maxHealth;
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
     }
 
     private void Update()
     {
+        // Check if it is in/out of camera view
         if (GameManager.Instance.MainCamera.IsPointInBounds(transform.position))
         {
             if (!_hasEnteredView)

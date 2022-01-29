@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [Header("Managers")]
     [SerializeField] private PopupSpawner _popupSpawner = null;
     [SerializeField] private EnemySpawner _enemySpawner = null;
+    [SerializeField] private BackgroundManager _backgroundManager = null;
 
     [Header("References")]
     [SerializeField] private Camera _mainCamera = null;

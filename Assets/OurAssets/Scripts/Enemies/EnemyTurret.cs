@@ -12,12 +12,14 @@ public class EnemyTurret : MonoBehaviour
     [SerializeField] private Transform _meshTransform = null;
 
     private Transform _playerTransform;
+    private Transform _enemyTransform;
     private bool _shouldShoot = false;
     private float _shootTimer = 0f;
 
     private void Start()
     {
         _playerTransform = GameManager.Instance.Player.transform;
+        _enemyTransform = transform.parent;
     }
 
     private void Update()
@@ -35,7 +37,7 @@ public class EnemyTurret : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (_lockOnPlayer)
+        if (_lockOnPlayer && _meshTransform)
         {
             _meshTransform.LookAt(_playerTransform, Vector3.up);
         }
@@ -43,7 +45,11 @@ public class EnemyTurret : MonoBehaviour
 
     private void ShootBullet()
     {
-
+        Vector3 shootDir = _lockOnPlayer
+            ? Vector3.Normalize(_playerTransform.position - _enemyTransform.position)
+            : _enemyTransform.forward;
+            
+        Debug.Log("Shooting bullet with direction " + shootDir);
     }
 
     public void StartShooting() => _shouldShoot = true;

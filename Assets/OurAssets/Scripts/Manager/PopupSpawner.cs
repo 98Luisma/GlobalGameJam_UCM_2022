@@ -125,7 +125,7 @@ public class PopupSpawner : MonoBehaviour
         }
 
         // Add a tiny variation on the Y axis to prevent overlap
-        spawnPos.y = _spawnPositionY;
+        // spawnPos.y = _spawnPositionY;
 
         return spawnPos;
     }

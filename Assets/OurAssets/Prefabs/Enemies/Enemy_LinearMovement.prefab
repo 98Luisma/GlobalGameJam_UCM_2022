@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 2
+  _lookTowardsMoveDirection: 0
   _turrets:
   - {fileID: 838136926622270318}
   _deathParticles: {fileID: 0}

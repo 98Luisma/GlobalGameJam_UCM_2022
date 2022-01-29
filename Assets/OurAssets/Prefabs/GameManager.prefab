@@ -48,6 +48,7 @@ MonoBehaviour:
   _popupSpawner: {fileID: 6127214726805618069}
   _enemySpawner: {fileID: 6127214726805618068}
   _mainCamera: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!114 &6127214726805618069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +70,7 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 0, a: 0}
   - {r: 0, g: 1, b: 1, a: 0}
   - {r: 1, g: 0, b: 1, a: 0}
-  _spawnPositionY: 3
+  _spawnPositionY: 11
   _maxSimultaneousPopups: 10
   _spawnOnCursorProbability: 0.3
   _widthMinMax: {x: 1, y: 1.5}
@@ -87,4 +88,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5e1a7954f22be448e736266ec65fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPeriod: 1
+  _spawnPositionY: 0
+  _spawnSequencePeriod: 5
+  _extraOffset: 3
+  _enemySequences:
+  - {fileID: 11400000, guid: 63f0a715b5200e34a8c052548e22899f, type: 2}
+  - {fileID: 11400000, guid: cdd61f954ebc3f0409d278f61fe8b521, type: 2}
+  - {fileID: 11400000, guid: 021c340f315a5db4a969cea45d25cc76, type: 2}
+  - {fileID: 11400000, guid: 7d48ae7fd1819ed46be59c74ee271dad, type: 2}
