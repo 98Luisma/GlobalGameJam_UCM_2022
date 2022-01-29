@@ -36,6 +36,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // _popupSpawner.SetShouldSpawn(true);
-        // _enemySpawner.SetShouldSpawn(true);
+        _enemySpawner.SetShouldSpawn(true);
     }
 }
