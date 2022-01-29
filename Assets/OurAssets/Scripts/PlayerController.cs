@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private Transform _turretTransform;
 
     public float runSpeed = 10f;
     
@@ -38,17 +39,23 @@ public class PlayerController : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         verticalMove = Input.GetAxisRaw("Vertical") * runSpeed;
 
-        if (Input.GetButtonDown("Fire1"))
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        // Debug.DrawRay(ray.origin, ray.direction * 25, Color.yellow, 5);
+        RaycastHit rayCast;
+        if (Physics.Raycast(ray, out rayCast, 25, _layerMask))
         {
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(ray.origin, ray.direction * 25, Color.yellow, 5);
-            RaycastHit rayCast;
-            if (Physics.Raycast(ray, out rayCast, 25, _layerMask))
+            // Turn the turret
+            if (_turretTransform)
             {
-                if (rayCast.collider.CompareTag("RayCastPlane"))
-                {
+                Vector3 lookPoint = rayCast.point;
+                lookPoint.y = _turretTransform.position.y;
+                _turretTransform.LookAt(lookPoint, Vector3.up);
+            }
+
+            // Shoot on player input
+            if (Input.GetButtonDown("Fire1") && rayCast.collider.CompareTag("RayCastPlane"))
+            {
                 _bulletPool.RequestObject(transform.position).SetupBullet(rayCast.point, shootRadius);
-                }
             }
         }
     }
