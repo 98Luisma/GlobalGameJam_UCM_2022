@@ -59,13 +59,13 @@ public class GameManager : MonoBehaviour
         lives = _mainCanvas.transform.Find("Lives");
     }
 
-    public void addMoney(int amount)
+    public void AddMoney(int amount)
     {
         money += amount;
         moneyUI.text = money.ToString();
     }
 
-    public void addLife(int amount)
+    public void AddLife(int amount)
     {
         life += amount;
         int children = lives.childCount;
@@ -81,9 +81,14 @@ public class GameManager : MonoBehaviour
         //_mainCanvas.transform.Find("Lives").Find("Hearth" + totalLives).gameObject.GetComponent<RawImage>().color = Color.black;
     }
 
-    public void addScore(int amount)
+    public void AddScore(int amount)
     {
         score += amount;
         scoreUI.text = score.ToString();
+    }
+
+    public EnemyBullet RequestEnemyBullet()
+    {
+        return _enemySpawner.RequestEnemyBullet();
     }
 }

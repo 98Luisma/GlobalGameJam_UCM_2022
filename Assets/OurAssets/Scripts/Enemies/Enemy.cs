@@ -68,8 +68,8 @@ public abstract class Enemy : MonoBehaviour
     private void Die()
     {
         // Add points to the manager
-        GameManager.Instance.addScore(_pointsAwardedOnDeath);
-        GameManager.Instance.addMoney(_moneyAwardedOnDeath);
+        GameManager.Instance.AddScore(_pointsAwardedOnDeath);
+        GameManager.Instance.AddMoney(_moneyAwardedOnDeath);
 
         if (_deathParticles)
         {

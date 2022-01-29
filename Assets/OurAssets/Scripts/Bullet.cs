@@ -12,7 +12,12 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private ParticleSystem explosion;
 
-    public void setupBullet (Vector3 shootP, float shootR)
+    private void OnEnable()
+    {
+        StartCoroutine(DeactivateAfterSeconds(10f));
+    }
+
+    public void SetupBullet (Vector3 shootP, float shootR)
     {
         shootPoint = shootP;
         shootRadius = shootR;
@@ -20,13 +25,6 @@ public class Bullet : MonoBehaviour
         maxDistance = Vector3.SqrMagnitude(shootPoint - transform.position);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Vector3.MoveTowards(transform.position, shootPoint, speed * Time.deltaTime) == transform.position)
@@ -46,7 +44,9 @@ public class Bullet : MonoBehaviour
                     }
                 }
             }
-            Destroy(gameObject);
+
+            StopAllCoroutines();
+            gameObject.SetActive(false);
         } else
         {
             if (Vector3.SqrMagnitude(shootPoint - transform.position) < maxDistance/2 * maxDistance/2)
@@ -58,6 +58,12 @@ public class Bullet : MonoBehaviour
             }
             transform.position = Vector3.MoveTowards(transform.position, shootPoint, speed * Time.deltaTime);
         }
+    }
+
+    private IEnumerator DeactivateAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        gameObject.SetActive(false);
     }
 
     void OnDrawGizmos()

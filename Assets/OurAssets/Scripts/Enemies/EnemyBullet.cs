@@ -15,9 +15,9 @@ public class EnemyBullet : MonoBehaviour
 
     private Vector3 _moveDir;
 
-    private void Start()
+    private void OnEnable()
     {
-        Destroy(gameObject, _maxLifetime);
+        StartCoroutine(DeactivateAfterSeconds(10f));
     }
 
     private void Update()
@@ -40,12 +40,19 @@ public class EnemyBullet : MonoBehaviour
 
     private void HitPlayer()
     {
-        GameManager.Instance.addLife(-_damage);
+        GameManager.Instance.AddLife(-_damage);
 
         Instantiate(_explosionParticles, transform.position, Quaternion.identity);
 
         // TODO: Play a sound
 
-        Destroy(gameObject);
+        StopAllCoroutines();
+        gameObject.SetActive(false);
+    }
+
+    private IEnumerator DeactivateAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        gameObject.SetActive(false);
     }
 }

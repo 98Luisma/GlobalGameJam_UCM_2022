@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _bulletPool = new ObjectPool<Bullet>(_bulletPrefab, 30);
+        _bulletPool = new ObjectPool<Bullet>(_bulletPrefab, 20);
     }
 
     // Start is called before the first frame update
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (rayCast.collider.CompareTag("RayCastPlane"))
                 {
-                Instantiate(_bulletPrefab, transform.position, Quaternion.identity).setupBullet(rayCast.point, shootRadius);
+                _bulletPool.RequestObject(transform.position).SetupBullet(rayCast.point, shootRadius);
                 }
             }
         }

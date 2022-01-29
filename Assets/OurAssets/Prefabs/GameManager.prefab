@@ -96,6 +96,7 @@ MonoBehaviour:
   _spawnPositionY: 0
   _spawnSequencePeriod: 5
   _extraOffset: 3
+  _enemyBulletPrefab: {fileID: 3420046208229807067, guid: 4c67c8831ef51204fa1d662498722af0, type: 3}
   _enemySequences:
   - {fileID: 11400000, guid: 63f0a715b5200e34a8c052548e22899f, type: 2}
   - {fileID: 11400000, guid: cdd61f954ebc3f0409d278f61fe8b521, type: 2}
@@ -118,6 +119,6 @@ MonoBehaviour:
   - {fileID: 4343904533076286142, guid: 9046faf3702c12b45a3a42726f4d6fb8, type: 3}
   - {fileID: 6947022038144856807, guid: 71f6899299411fe4383dde23e6b80d26, type: 3}
   _blockZSize: 10
-  startZ: 10
+  startZ: 20
   endAfter: 4
   depth: -5
