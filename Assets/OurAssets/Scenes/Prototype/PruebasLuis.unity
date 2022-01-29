@@ -365,7 +365,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &509513880
 PrefabInstance:
@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 2131754215}
     - target: {fileID: 6127214726805618071, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6127214726805618071, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: m_LocalPosition.x
