@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _popupSpawner.SetShouldSpawn(true);
-        // _enemySpawner.SetShouldSpawn(true);
+        // _popupSpawner.SetShouldSpawn(true);
+        _enemySpawner.SetShouldSpawn(true);
 
         life = 5;
         money = 1000;
@@ -59,13 +59,13 @@ public class GameManager : MonoBehaviour
         lives = _mainCanvas.transform.Find("Lives");
     }
 
-    void addMoney(int amount)
+    public void addMoney(int amount)
     {
         money += amount;
         moneyUI.text = money.ToString();
     }
 
-    void addLife(int amount)
+    public void addLife(int amount)
     {
         life += amount;
         int children = lives.childCount;
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         //_mainCanvas.transform.Find("Lives").Find("Hearth" + totalLives).gameObject.GetComponent<RawImage>().color = Color.black;
     }
 
-    void addScore(int amount)
+    public void addScore(int amount)
     {
         score += amount;
         scoreUI.text = score.ToString();

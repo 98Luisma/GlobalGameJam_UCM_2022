@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
                 {
                     if (enemy.CompareTag("Enemy"))
                     {
-                        Debug.Log("HIT");
+                        // Debug.Log("HIT");
                         enemy.GetComponent<Enemy>().Damage();
                     }
                 }
