@@ -8,8 +8,10 @@ public class Popup : MonoBehaviour
     [SerializeField] private Canvas _canvas;
     [SerializeField] private Image _outerImage;
     [SerializeField] private Image _contentsImage;
+    [SerializeField] private BoxCollider _collider;
 
     private Camera _mainCamera;
+    private Vector2 _targetSize;
 
     public event System.Action<Popup> OnPopupDestroyed;
 
@@ -27,10 +29,16 @@ public class Popup : MonoBehaviour
         OnPopupDestroyed?.Invoke(this);
     }
 
-    public void Initialize(Color color/*, Vector2 size, Vector3 position*/)
+    public void Initialize(Color color, Vector2 size/*, Vector3 position*/)
     {
+        // Set color
         color.a = 1;
         _outerImage.color = color;
+
+        // Set size
+        _targetSize = size;
+        (_canvas.transform as RectTransform).sizeDelta = size;
+        _collider.size = new Vector3(size.x, size.y, 0.1f);
 
         OpenPopup();
     }

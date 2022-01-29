@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6127214726805618070}
   - component: {fileID: 6127214726805618069}
   - component: {fileID: 6127214726805618068}
-  - component: {fileID: 8381674211315632613}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -48,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _popupSpawner: {fileID: 6127214726805618069}
   _enemySpawner: {fileID: 6127214726805618068}
-  _backgroundManager: {fileID: 0}
   _mainCamera: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!114 &6127214726805618069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,9 +70,12 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 0, a: 0}
   - {r: 0, g: 1, b: 1, a: 0}
   - {r: 1, g: 0, b: 1, a: 0}
-  _spawnPositionY: 3
+  _spawnPositionY: 11
   _maxSimultaneousPopups: 10
-  _spawnOnCursorProbability: 0
+  _spawnOnCursorProbability: 0.3
+  _widthMinMax: {x: 1, y: 1.5}
+  _heightMinMax: {x: 1, y: 1.5}
+  _maxSpawnAttempts: 5
 --- !u!114 &6127214726805618068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,23 +88,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5e1a7954f22be448e736266ec65fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPeriod: 1
---- !u!114 &8381674211315632613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6127214726805618065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc4084e61b9a248468ce0e670acaec51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blockPrefabs:
-  - {fileID: 4343904533076286142, guid: 9046faf3702c12b45a3a42726f4d6fb8, type: 3}
-  - {fileID: 6947022038144856807, guid: 71f6899299411fe4383dde23e6b80d26, type: 3}
-  _blockZSize: 20
-  startZ: 10
-  endAfter: 4
-  depth: -10
+  _spawnPositionY: 0
+  _spawnSequencePeriod: 5
+  _extraOffset: 3
+  _enemySequences:
+  - {fileID: 11400000, guid: 63f0a715b5200e34a8c052548e22899f, type: 2}
+  - {fileID: 11400000, guid: cdd61f954ebc3f0409d278f61fe8b521, type: 2}
+  - {fileID: 11400000, guid: 021c340f315a5db4a969cea45d25cc76, type: 2}
+  - {fileID: 11400000, guid: 7d48ae7fd1819ed46be59c74ee271dad, type: 2}

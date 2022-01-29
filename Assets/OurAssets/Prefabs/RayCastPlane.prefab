@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7882805068088774014}
   - component: {fileID: 7882805068088774015}
   - component: {fileID: 7882805068088774008}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RayCastPlane
   m_TagString: RayCastPlane
   m_Icon: {fileID: 0}

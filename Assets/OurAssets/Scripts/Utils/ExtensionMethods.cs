@@ -36,7 +36,7 @@ public static class ExtensionMethods
         Vector3[] corners = new Vector3[4];
         camera.CalculateFrustumCorners(new Rect(0f, 0f, 1f, 1f), zDepth, Camera.MonoOrStereoscopicEye.Mono, corners);
         
-        return camera.transform.TransformVector(corners[corner]);
+        return camera.transform.TransformPoint(corners[corner]);
     }
 
     ///<summary>
@@ -47,8 +47,8 @@ public static class ExtensionMethods
     {
         Vector3[] corners = new Vector3[4];
         camera.CalculateFrustumCorners(new Rect(0f, 0f, 1f, 1f), zDepth, Camera.MonoOrStereoscopicEye.Mono, corners);
-        Vector3 bottomLeftCorner = camera.transform.TransformVector(corners[0]);
-        Vector3 topRightCorner = camera.transform.TransformVector(corners[2]);
+        Vector3 bottomLeftCorner = camera.transform.TransformPoint(corners[0]);
+        Vector3 topRightCorner = camera.transform.TransformPoint(corners[2]);
 
         Vector3 randomPoint = new Vector3(
             Random.Range(bottomLeftCorner.x, topRightCorner.x),
@@ -56,11 +56,12 @@ public static class ExtensionMethods
             Random.Range(bottomLeftCorner.z, topRightCorner.z)
         );
 
+        /*
         Debug.DrawLine(camera.transform.position, bottomLeftCorner, Color.red, 2f);
         Debug.DrawLine(camera.transform.position, topRightCorner, Color.green, 2f);
         Debug.DrawLine(camera.transform.position, randomPoint, Color.blue, 2f);
+        */
         
-
         return randomPoint;
     }
 }
