@@ -19,6 +19,7 @@ public class Popup : MonoBehaviour
     [SerializeField] private int _givenMoney = 0;
 
     private Camera _mainCamera;
+    private bool _isClosing = false;
 
     public event System.Action<Popup> OnPopupDestroyed;
 
@@ -74,27 +75,47 @@ public class Popup : MonoBehaviour
     ///</summary>
     private void ClosePopup()
     {
+        _isClosing = true;
+
         StopAllCoroutines();
         StartCoroutine(InnerCoroutine());
 
         // Definition of the Coroutine called above
         IEnumerator InnerCoroutine()
         {
-            // TODO
-            yield return null;
+            float timer = 0f;
+            while (timer <= _openTime)
+            {
+                float x = timer / _openTime;
+                float t = (_elasticity+1f) * x*x*x - _elasticity * x*x;
+                _canvasParent.localScale = new Vector3(1f, 1f-t, 1f);
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            _canvasParent.localScale = Vector3.one;
 
             // When finished
             Destroy(gameObject);
         }
     }
 
-    public void Btn_Close() => ClosePopup();
+    public void Btn_Close()
+    {
+        if (!_isClosing)
+        {
+            ClosePopup();
+        }
+    }
 
     public void Btn_Buy()
     {
-        GameManager.Instance.addMoney(_givenMoney);
-        GameManager.Instance.addLife(_givenLife);
-        ClosePopup();
+        if (!_isClosing)
+        {
+            GameManager.Instance.addMoney(_givenMoney);
+            GameManager.Instance.addLife(_givenLife);
+            ClosePopup();
+        }
     }
 
     public float GetWidth() => _collider.size.x;

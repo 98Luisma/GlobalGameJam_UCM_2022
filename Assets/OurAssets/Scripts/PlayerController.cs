@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Bullet projectile;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private Bullet _bulletPrefab;
+    [SerializeField] private LayerMask _layerMask;
 
     public float runSpeed = 10f;
-    public Camera camera;
+    
+    private Camera _camera;
+    private ObjectPool<Bullet> _bulletPool;
 
     float horizontalMove = 0f;
     float verticalMove = 0f;
@@ -19,10 +21,15 @@ public class PlayerController : MonoBehaviour
 
     float offset = 3f;
 
+    private void Awake()
+    {
+        _bulletPool = new ObjectPool<Bullet>(_bulletPrefab, 30);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        camera = GameManager.Instance.MainCamera;
+        _camera = GameManager.Instance.MainCamera;
     }
 
     // Update is called once per frame
@@ -33,14 +40,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction * 25, Color.yellow, 5);
             RaycastHit rayCast;
-            if (Physics.Raycast(ray, out rayCast, 25, layerMask))
+            if (Physics.Raycast(ray, out rayCast, 25, _layerMask))
             {
                 if (rayCast.collider.CompareTag("RayCastPlane"))
                 {
-                Instantiate(projectile, transform.position, Quaternion.identity).setupBullet(rayCast.point, shootRadius);
+                Instantiate(_bulletPrefab, transform.position, Quaternion.identity).setupBullet(rayCast.point, shootRadius);
                 }
             }
         }
@@ -60,8 +67,8 @@ public class PlayerController : MonoBehaviour
 
         if 
         (
-            camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime + offset, 0, 0 )) &&
-            camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime - offset, 0, 0 ))
+            _camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime + offset, 0, 0 )) &&
+            _camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime - offset, 0, 0 ))
         )
         {
             transform.position = transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime, 0, 0);
@@ -69,8 +76,8 @@ public class PlayerController : MonoBehaviour
 
         if
         (
-            camera.IsPointInBounds(transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime + offset)) &&
-            camera.IsPointInBounds(transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime - offset))
+            _camera.IsPointInBounds(transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime + offset)) &&
+            _camera.IsPointInBounds(transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime - offset))
         )
         {
             transform.position = transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime);
