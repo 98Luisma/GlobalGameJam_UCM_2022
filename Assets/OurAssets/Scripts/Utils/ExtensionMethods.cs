@@ -56,11 +56,12 @@ public static class ExtensionMethods
             Random.Range(bottomLeftCorner.z, topRightCorner.z)
         );
 
+        /*
         Debug.DrawLine(camera.transform.position, bottomLeftCorner, Color.red, 2f);
         Debug.DrawLine(camera.transform.position, topRightCorner, Color.green, 2f);
         Debug.DrawLine(camera.transform.position, randomPoint, Color.blue, 2f);
+        */
         
-
         return randomPoint;
     }
 }

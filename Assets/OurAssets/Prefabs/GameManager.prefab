@@ -48,8 +48,6 @@ MonoBehaviour:
   _popupSpawner: {fileID: 6127214726805618069}
   _enemySpawner: {fileID: 6127214726805618068}
   _mainCamera: {fileID: 0}
-  _gameAreaWidth: 10
-  _gameAreaHeight: 10
 --- !u!114 &6127214726805618069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +72,8 @@ MonoBehaviour:
   _spawnPositionY: 3
   _maxSimultaneousPopups: 10
   _spawnOnCursorProbability: 0
+  _widthMinMax: {x: 1, y: 1.5}
+  _heightMinMax: {x: 1, y: 1.5}
 --- !u!114 &6127214726805618068
 MonoBehaviour:
   m_ObjectHideFlags: 0

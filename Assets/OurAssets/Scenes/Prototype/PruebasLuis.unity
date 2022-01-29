@@ -376,6 +376,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6127214726805618069, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
+      propertyPath: _spawnPeriod
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127214726805618069, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
+      propertyPath: _maxSimultaneousPopups
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6127214726805618070, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: _mainCamera
       value: 
