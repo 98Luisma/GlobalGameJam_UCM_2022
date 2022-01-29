@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
+    private void Awake()
+    {
+        QualitySettings.vSyncCount = 1;
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene("MainScene");

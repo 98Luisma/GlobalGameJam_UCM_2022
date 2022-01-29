@@ -77,7 +77,7 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 0, a: 0}
   - {r: 0, g: 1, b: 1, a: 0}
   - {r: 1, g: 0, b: 1, a: 0}
-  _spawnPositionY: 11
+  _spawnPositionY: 12.5
   _maxSimultaneousPopups: 10
   _spawnOnCursorProbability: 0.3
   _maxSpawnAttempts: 5
@@ -117,7 +117,7 @@ MonoBehaviour:
   _blockPrefabs:
   - {fileID: 4343904533076286142, guid: 9046faf3702c12b45a3a42726f4d6fb8, type: 3}
   - {fileID: 6947022038144856807, guid: 71f6899299411fe4383dde23e6b80d26, type: 3}
-  _blockZSize: 20
+  _blockZSize: 10
   startZ: 10
-  endAfter: 3
+  endAfter: 4
   depth: -5
