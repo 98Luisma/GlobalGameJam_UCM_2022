@@ -71,9 +71,10 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 1, a: 0}
   _spawnPositionY: 3
   _maxSimultaneousPopups: 10
-  _spawnOnCursorProbability: 0
+  _spawnOnCursorProbability: 0.3
   _widthMinMax: {x: 1, y: 1.5}
   _heightMinMax: {x: 1, y: 1.5}
+  _maxSpawnAttempts: 5
 --- !u!114 &6127214726805618068
 MonoBehaviour:
   m_ObjectHideFlags: 0

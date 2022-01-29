@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143221125}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 5, z: -0.5}
+  m_LocalPosition: {x: 0, y: 7, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -375,14 +375,6 @@ PrefabInstance:
     - target: {fileID: 6127214726805618065, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 6127214726805618069, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
-      propertyPath: _spawnPeriod
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6127214726805618069, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
-      propertyPath: _maxSimultaneousPopups
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6127214726805618070, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: _mainCamera

@@ -11,9 +11,10 @@ public class PopupSpawner : MonoBehaviour
     [Header("Spawn")]
     [SerializeField] private float _spawnPositionY = 5f;
     [SerializeField] private int _maxSimultaneousPopups = 10;
-    [SerializeField, Range(0,1)] private float _spawnOnCursorProbability = 0.2f;
+    [SerializeField, Range(0, 1)] private float _spawnOnCursorProbability = 0.2f;
     [SerializeField] private Vector2 _widthMinMax = new Vector2(1f, 3f);
     [SerializeField] private Vector2 _heightMinMax = new Vector2(1f, 3f);
+    [SerializeField] private int _maxSpawnAttempts = 5;
 
     private bool _shouldSpawn = false;
     private float _spawnTimer = 0f;
@@ -50,10 +51,18 @@ public class PopupSpawner : MonoBehaviour
         Vector2 popupSize = new Vector2(popupWidth, popupHeight);
 
         // Select a position
-        Vector3 spawnPosition = Vector3.zero;;
-        bool isPositionValid = false;
-        while (!isPositionValid)
+        Vector3 spawnPosition = Vector3.zero; ;
+        int attempts = 0;
+        while (true)
         {
+            ++attempts;
+            if (attempts > _maxSpawnAttempts)
+            {
+                // Failed to find a position.
+                // Don't spawn a popup
+                return;
+            }
+
             spawnPosition = FindSpawnPosition();
 
             Vector3 testOffset = new Vector3(
@@ -62,11 +71,27 @@ public class PopupSpawner : MonoBehaviour
                 Mathf.Sign(spawnPosition.z) * popupHeight * 0.75f
             );
 
+            // Is the popup overlapping another popup?
+            Collider[] detectedColl = new Collider[1];
+            Physics.OverlapBoxNonAlloc(
+                spawnPosition,
+                new Vector3(popupWidth * 0.75f, 0.05f, popupHeight * 0.75f),
+                detectedColl,
+                Quaternion.identity,
+                LayerMask.GetMask("Popup")
+            );
+            if (detectedColl[0])
+            {
+                // Cannot spawn here
+                continue;
+            }
+
+            // Is the popup completely inside of the screen?
             if (GameManager.Instance.MainCamera.IsPointInBounds(spawnPosition + testOffset))
             {
-                isPositionValid = true;
+                // This position is valid
+                break;
             }
-            
         }
 
         Popup newPopup = Instantiate<Popup>(_popupBasePrefab, spawnPosition, Quaternion.identity);

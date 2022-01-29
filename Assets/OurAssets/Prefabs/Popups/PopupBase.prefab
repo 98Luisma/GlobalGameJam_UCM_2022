@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2561869456518736846}
   - component: {fileID: 2561869456518736840}
   - component: {fileID: 2561869456518736841}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PopupWindow_Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 2561869456984365741}
   - component: {fileID: 2561869456984365730}
   - component: {fileID: 2561869456984365731}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 2561869456994061337}
   - component: {fileID: 2561869456994061339}
   - component: {fileID: 2561869456994061336}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PopupContents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 2561869457341672226}
   - component: {fileID: 2561869457341672227}
   - component: {fileID: 2561869457341672224}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PopupCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2561869457485468608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2561869458001788757}
   - component: {fileID: 2561869458001788756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PopupBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 2561869458328656608}
   - component: {fileID: 2561869458328656610}
   - component: {fileID: 2561869458328656611}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PopupWindow_Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3306881243625316954}
   - component: {fileID: 2208628206243922012}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
