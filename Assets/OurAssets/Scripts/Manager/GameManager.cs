@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerController _player = null;
 
     [SerializeField] private Canvas _mainCanvas = null;
+    [SerializeField] private TextMeshProUGUI scoreUI = null;
+    [SerializeField] private TextMeshProUGUI moneyUI = null;
     private Transform lives = null;
 
     private static GameManager _instance;
@@ -48,13 +51,17 @@ public class GameManager : MonoBehaviour
         // _enemySpawner.SetShouldSpawn(true);
         life = 5;
         money = 1000;
+        moneyUI.text = money.ToString();
         score = 0;
+        scoreUI.text = score.ToString();
+
         lives = _mainCanvas.transform.Find("Lives");
     }
 
     void addMoney(int amount)
     {
         money += amount;
+        moneyUI.text = money.ToString();
     }
 
     void addLife(int amount)
@@ -76,5 +83,6 @@ public class GameManager : MonoBehaviour
     void addScore(int amount)
     {
         score += amount;
+        scoreUI.text = score.ToString();
     }
 }
