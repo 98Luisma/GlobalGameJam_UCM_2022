@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Bullet projectile;
 
     public float runSpeed = 10f;
     public Camera camera;
@@ -38,23 +39,9 @@ public class PlayerController : MonoBehaviour
             {
                 if (rayCast.collider.CompareTag("RayCastPlane"))
                 {
-                    Debug.Log("Hit con el plano " + rayCast.point);
-                    
-                    Collider[] sphereCast;
 
-                    currentHitPosition = rayCast.point;
-                    sphereCast = Physics.OverlapSphere(rayCast.point, shootRadius);
+                    Instantiate(projectile, transform.position, Quaternion.identity).setupBullet(rayCast.point, shootRadius);
 
-                    if (sphereCast.Length > 0)
-                    {
-                        foreach (Collider enemy in sphereCast)
-                        {
-                            if (enemy.CompareTag("Enemy"))
-                            {
-                                Debug.Log("Hit con el enemigo");
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -66,12 +53,10 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion target = Quaternion.Euler(0, 0, (-1) * Mathf.Sign(horizontalMove) * 40);
             transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.fixedDeltaTime * 5.0f);
-            Debug.Log(transform.rotation);
         } else
         {
             Quaternion target = Quaternion.Euler(0, 0, 0);
             transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.fixedDeltaTime * 5.0f);
-            Debug.Log(transform.rotation);
         }
 
         if 
