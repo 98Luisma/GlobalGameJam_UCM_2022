@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6127214726805618070}
   - component: {fileID: 6127214726805618069}
   - component: {fileID: 6127214726805618068}
+  - component: {fileID: 6589026190599434471}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -47,8 +48,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _popupSpawner: {fileID: 6127214726805618069}
   _enemySpawner: {fileID: 6127214726805618068}
+  _backgroundManager: {fileID: 6589026190599434471}
   _mainCamera: {fileID: 0}
   _player: {fileID: 0}
+  _mainCanvas: {fileID: 0}
+  scoreUI: {fileID: 0}
+  moneyUI: {fileID: 0}
 --- !u!114 &6127214726805618069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,3 +101,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cdd61f954ebc3f0409d278f61fe8b521, type: 2}
   - {fileID: 11400000, guid: 021c340f315a5db4a969cea45d25cc76, type: 2}
   - {fileID: 11400000, guid: 7d48ae7fd1819ed46be59c74ee271dad, type: 2}
+--- !u!114 &6589026190599434471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6127214726805618065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4084e61b9a248468ce0e670acaec51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPaused: 0
+  _blockPrefabs:
+  - {fileID: 4343904533076286142, guid: 9046faf3702c12b45a3a42726f4d6fb8, type: 3}
+  - {fileID: 6947022038144856807, guid: 71f6899299411fe4383dde23e6b80d26, type: 3}
+  _blockZSize: 20
+  startZ: 10
+  endAfter: 3
+  depth: -5
