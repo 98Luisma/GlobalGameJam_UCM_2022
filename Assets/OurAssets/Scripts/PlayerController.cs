@@ -11,6 +11,12 @@ public class PlayerController : MonoBehaviour
     float horizontalMove = 0f;
     float verticalMove = 0f;
 
+    float shootRadius = 2f;
+
+    Vector3 currentHitPosition;
+
+    float offset = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,15 +38,43 @@ public class PlayerController : MonoBehaviour
             {
                 if (rayCast.collider.CompareTag("RayCastPlane"))
                 {
-                    Debug.Log("Hit con el plano");
+                    Debug.Log("Hit con el plano " + rayCast.point);
+                    
+                    Collider[] sphereCast;
+
+                    currentHitPosition = rayCast.point;
+                    sphereCast = Physics.OverlapSphere(rayCast.point, shootRadius);
+
+                    if (sphereCast.Length > 0)
+                    {
+                        foreach (Collider enemy in sphereCast)
+                        {
+                            if (enemy.CompareTag("Enemy"))
+                            {
+                                Debug.Log("Hit con el enemigo");
+                            }
+                        }
+                    }
                 }
             }
-
         }
     }
 
     void FixedUpdate()
     {
-        transform.position = transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime, 0, verticalMove * Time.fixedDeltaTime);
+        if 
+        (
+            camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime + offset, 0, verticalMove * Time.fixedDeltaTime + offset)) &&
+            camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime - offset, 0, verticalMove * Time.fixedDeltaTime - offset))
+        )
+        {
+            transform.position = transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime, 0, verticalMove * Time.fixedDeltaTime);
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(currentHitPosition, shootRadius);
     }
 }
