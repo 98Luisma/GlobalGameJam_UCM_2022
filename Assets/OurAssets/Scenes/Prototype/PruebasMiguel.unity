@@ -403,6 +403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6127214726805618069, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
+      propertyPath: _maxSimultaneousPopups
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6127214726805618070, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: _player
       value: 
@@ -665,6 +669,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 216592947756848356, guid: 47ac8083f3e5eb94890d22e6c3176de5, type: 3}
       propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 216592947756848356, guid: 47ac8083f3e5eb94890d22e6c3176de5, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
