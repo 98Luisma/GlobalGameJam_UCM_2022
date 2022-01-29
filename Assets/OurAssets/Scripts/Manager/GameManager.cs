@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
 
+    private int life;
+    private int money;
+
 #region Getters
     public Camera MainCamera { get => _mainCamera; }
     public PlayerController Player { get => _player; }
@@ -37,5 +40,17 @@ public class GameManager : MonoBehaviour
     {
         // _popupSpawner.SetShouldSpawn(true);
         // _enemySpawner.SetShouldSpawn(true);
+        life = 10;
+        money = 1000;
+    }
+
+    void addMoney(int amount)
+    {
+        money += amount;
+    }
+
+    void addLife(int amount)
+    {
+        life += amount;
     }
 }
