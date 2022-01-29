@@ -62,6 +62,18 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (horizontalMove != 0.0f)
+        {
+            Quaternion target = Quaternion.Euler(0, 0, (-1) * Mathf.Sign(horizontalMove) * 40);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.fixedDeltaTime * 5.0f);
+            Debug.Log(transform.rotation);
+        } else
+        {
+            Quaternion target = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.fixedDeltaTime * 5.0f);
+            Debug.Log(transform.rotation);
+        }
+
         if 
         (
             camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime + offset, 0, verticalMove * Time.fixedDeltaTime + offset)) &&
@@ -72,7 +84,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(currentHitPosition, shootRadius);
