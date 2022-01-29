@@ -68,8 +68,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPeriod: 1
   _popupPrefabs:
-  - {fileID: 2561869458001788756, guid: dadd748fca09798449d2069f769a09b6, type: 3}
+  - {fileID: 2561869458001788756, guid: 595bd3404e4977f48b5a21a57fb6324f, type: 3}
+  - {fileID: 2561869458001788756, guid: 11d994c0b8397be4ca31072967183409, type: 3}
+  - {fileID: 2561869458001788756, guid: e6e35bb33ca793d448ba322566e13fe7, type: 3}
+  - {fileID: 2561869458001788756, guid: 2e68092219dc12e4db3c3b0fefa3b376, type: 3}
+  - {fileID: 2561869458001788756, guid: 7d54d51f46d450243b66c52117a4b57f, type: 3}
   - {fileID: 2561869458001788756, guid: 5c2435a6014b1354a9786ea79b3527d0, type: 3}
+  - {fileID: 2561869458001788756, guid: 12fc162e10a2e8b4d9fb2ce9b2949193, type: 3}
   _popupColors:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0, g: 1, b: 0, a: 0}

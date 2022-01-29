@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GEMS GEMS GEMS GEMS GEMS
+  m_text: HEY! I'M A GOOD POPUP! :3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 353e428d9dbbd594c959d45dbc7f9ba0, type: 2}
   m_sharedMaterial: {fileID: -7402957235188514728, guid: 353e428d9dbbd594c959d45dbc7f9ba0, type: 2}
@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 2561869458001788757}
   - component: {fileID: 2561869458001788756}
   m_Layer: 8
-  m_Name: Popup_Bad_00
+  m_Name: Popup_Good_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,7 +528,7 @@ MonoBehaviour:
   _closeTime: 0.2
   _elasticity: 2
   _givenLife: 0
-  _givenMoney: -500
+  _givenMoney: 1000
 --- !u!1 &2561869458328656609
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BUY NOW
+  m_text: GET POINTZ
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 353e428d9dbbd594c959d45dbc7f9ba0, type: 2}
   m_sharedMaterial: {fileID: -7402957235188514728, guid: 353e428d9dbbd594c959d45dbc7f9ba0, type: 2}
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.15
+  m_fontSize: 0.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41037738, g: 1, b: 0.43066558, a: 1}
+  m_Color: {r: 0.62879854, g: 0.41176474, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
