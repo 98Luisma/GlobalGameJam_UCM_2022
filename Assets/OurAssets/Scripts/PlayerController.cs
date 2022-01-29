@@ -60,11 +60,20 @@ public class PlayerController : MonoBehaviour
 
         if 
         (
-            camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime + offset, 0, verticalMove * Time.fixedDeltaTime + offset)) &&
-            camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime - offset, 0, verticalMove * Time.fixedDeltaTime - offset))
+            camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime + offset, 0, 0 )) &&
+            camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime - offset, 0, 0 ))
         )
         {
-            transform.position = transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime, 0, verticalMove * Time.fixedDeltaTime);
+            transform.position = transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime, 0, 0);
+        }
+
+        if
+        (
+            camera.IsPointInBounds(transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime + offset)) &&
+            camera.IsPointInBounds(transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime - offset))
+        )
+        {
+            transform.position = transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime);
         }
     }
 
