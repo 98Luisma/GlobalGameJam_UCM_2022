@@ -185,6 +185,6 @@ MonoBehaviour:
   enemyBullet: {fileID: 8300000, guid: c0d9aa703af01d845aeaac9e24982967, type: 3}
   bossBullet: {fileID: 8300000, guid: ad9111edabc9f4840a561c52218b6d41, type: 3}
   bossTurbines: {fileID: 8300000, guid: f057fae0d21ba394681d0194024a8fd3, type: 3}
-  backgroundVol: 0.2
-  foregroundVol: 1
-  effectsVol: 0
+  backgroundVol: 0.15
+  foregroundVol: 0.7
+  effectsVol: 0.6
