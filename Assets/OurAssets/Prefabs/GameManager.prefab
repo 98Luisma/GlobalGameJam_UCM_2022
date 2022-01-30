@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManagerPF: {fileID: 9116433400222555090, guid: aa4e34a77ac5e614889873129bfa546c, type: 3}
+  _poolableAudioPrefab: {fileID: 3758834665033418954, guid: 7731c05fdf13c7245bd53fbae29818d5, type: 3}
   gameMusic: {fileID: 8300000, guid: 34abe90740667354caa9ca2dcea4a5b4, type: 3}
   adsMusic: {fileID: 8300000, guid: d6af58ce2f4de134b9890b7d7d36c2d5, type: 3}
   bulletSFX: {fileID: 0}
@@ -176,3 +177,4 @@ MonoBehaviour:
   clicSFX: {fileID: 0}
   backgroundVol: 0.2
   foregroundVol: 1
+  effectsVol: 0

@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject audioManagerPF = null;
+    [SerializeField] private PoolableAudio _poolableAudioPrefab = null;
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip gameMusic;
@@ -47,6 +48,8 @@ public class AudioManager : MonoBehaviour
     private AudioSource asExplosionSFX;
     private AudioSource asClicSFX;
 
+    private ObjectPool<PoolableAudio> _sourcePool;
+
     
     private static AudioManager _instance;
     public static AudioManager Instance { get => _instance; }
@@ -61,6 +64,8 @@ public class AudioManager : MonoBehaviour
         }
         _instance = this;
         // End of singleton implementation
+
+        _sourcePool = new ObjectPool<PoolableAudio>(_poolableAudioPrefab, 10);
     }
     // Start is called before the first frame update
     void Start()
@@ -113,11 +118,10 @@ public class AudioManager : MonoBehaviour
                 source = asAdsMusic;
                 break;
             case SoundType.Bullet:
-                source = asAdsMusic; // TEMP
-
-                //bulletSFX.length
-                //source = pull.getNewSource();
-
+                PoolableAudio audio = _sourcePool.RequestObject();
+                audio.DeactivateInSeconds(bulletSFX.length);
+                source = audio.AudioSrc;
+                
                 source.clip = bulletSFX;
                 source.loop = false;
                 source.volume = effectsVol;
