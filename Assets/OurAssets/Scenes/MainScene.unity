@@ -352,10 +352,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6127214726805618068, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
-      propertyPath: DEBUG_START_WITH_BOSS_BATTLE
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6127214726805618070, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: _player
       value: 
