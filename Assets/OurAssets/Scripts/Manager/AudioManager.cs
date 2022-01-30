@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip gameMusic;
-    [SerializeField] private AudioClip adsMusic;
+    [SerializeField] private List<AudioClip> adsMusic;
     [SerializeField] private AudioClip bossMusic;
     [SerializeField] private AudioClip popupOpen;
     [SerializeField] private AudioClip popupClose;
@@ -68,6 +68,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource asBossMusic;
 
     private ObjectPool<PoolableAudio> _sourcePool;
+    private int adMusicTrack = 0;
     
     private static AudioManager _instance;
     public static AudioManager Instance { get => _instance; }
@@ -83,10 +84,7 @@ public class AudioManager : MonoBehaviour
         _instance = this;
         // End of singleton implementation
         _sourcePool = new ObjectPool<PoolableAudio>(_poolableAudioPrefab, 10);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+
         audioManagerGO = Object.Instantiate(audioManagerPF,Vector3.zero,Quaternion.identity);
 
         asGameMusic = audioManagerGO.AddComponent<AudioSource>();
@@ -97,7 +95,7 @@ public class AudioManager : MonoBehaviour
         asGameMusic.Stop();
 
         asAdsMusic = audioManagerGO.AddComponent<AudioSource>();
-        asAdsMusic.clip = adsMusic;
+        asAdsMusic.clip = adsMusic[adMusicTrack];
         asAdsMusic.loop = true;
         asAdsMusic.volume = foregroundVol;
         asAdsMusic.playOnAwake = false;
@@ -116,14 +114,13 @@ public class AudioManager : MonoBehaviour
         asBossTurbines.volume = effectsVol;
         asBossTurbines.playOnAwake = false;
         asBossTurbines.Stop();
-
     }
 
     public void ManageAudio(AudioAction action, SoundType type)
     {
+        //Debug.Log("ManageAudio with action " + action + " and type " + type + ".");
         AudioSource source = null;
         PoolableAudio audio = _sourcePool.RequestObject();
-        Debug.Log("ManageAudio with action " + action + " and type " + type + ".");
         switch (type)
         {
             // Not from pull
@@ -195,7 +192,7 @@ public class AudioManager : MonoBehaviour
 
                 source.clip = enemyDestroyed;
                 source.loop = false;
-                source.volume = effectsVol;
+                source.volume = effectsVol * 0.5f;
                 break;
             case SoundType.PlayerBullet:
                 audio.DeactivateInSeconds(playerBullet.length);
@@ -263,6 +260,17 @@ public class AudioManager : MonoBehaviour
                     break;
                 case AudioAction.Stop:
                     source.Stop();
+                    break;
+                case AudioAction.Next:
+                    Debug.Log("ManageAudio with action " + action + " and type " + type + ".");
+                    if (type == SoundType.AdsMusic)
+                    {   
+                        Debug.LogError("1: " + adMusicTrack);
+                        adMusicTrack++;
+                        Debug.LogError("2: " + adMusicTrack);
+                        asAdsMusic.clip = adsMusic[adMusicTrack%adsMusic.Count];
+                        asAdsMusic.Play();
+                    }
                     break;
                 
             }

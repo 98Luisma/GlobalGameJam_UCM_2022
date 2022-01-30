@@ -348,6 +348,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 660210303481840774, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
+      propertyPath: adsMusic.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 660210303481840774, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
+      propertyPath: adsMusic.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d6af58ce2f4de134b9890b7d7d36c2d5, type: 3}
+    - target: {fileID: 660210303481840774, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
+      propertyPath: adsMusic.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8039df010e735474085238c6e5ceb150, type: 3}
+    - target: {fileID: 660210303481840774, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
+      propertyPath: adsMusic.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 160aea1bb49c3ba49917aaf98eea10ee, type: 3}
+    - target: {fileID: 660210303481840774, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
+      propertyPath: adsMusic.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b14cf3bcf0696a44b95709e8f11240c, type: 3}
+    - target: {fileID: 660210303481840774, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
+      propertyPath: adsMusic.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0cf3b5e6b8c787448ab36950ebd745c8, type: 3}
     - target: {fileID: 6127214726805618065, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: m_Name
       value: GameManager
