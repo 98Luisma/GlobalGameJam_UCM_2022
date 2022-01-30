@@ -437,8 +437,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "PROGRAMMING\n\nLuis Mar\xEDa Serrano Naranjo\n\nRoberto Carlos Claver
-    Ubiergo\n\nMiguel Mu\xF1oz Molina\n\n\n\nMUSIC & SFX\n\nFernando Sarr\xEDas L\xF3pez\n\n\n\nART\n\nDaniel\n\n\n\nSPECIAL
-    THANKS TO:\n\nCarlota Rios Rios\n"
+    Ubiergo\n\nMiguel Mu\xF1oz Molina\n\n\n\nMUSIC & SFX\n\nFernando Sarr\xEDas L\xF3pez\n\n\n\nART\n\nDaniel
+    S\xE1nchez Cuenca\n\n\n\nSPECIAL THANKS TO:\n\nCarlota Rios Rios\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
