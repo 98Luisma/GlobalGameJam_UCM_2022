@@ -83,9 +83,9 @@ public class AudioManager : MonoBehaviour
         }
         _instance = this;
         // End of singleton implementation
-        _sourcePool = new ObjectPool<PoolableAudio>(_poolableAudioPrefab, 10);
+        _sourcePool = new ObjectPool<PoolableAudio>(_poolableAudioPrefab, 100);
 
-        audioManagerGO = Object.Instantiate(audioManagerPF,Vector3.zero,Quaternion.identity);
+        audioManagerGO = Object.Instantiate(audioManagerPF, Vector3.zero, Quaternion.identity);
 
         asGameMusic = audioManagerGO.AddComponent<AudioSource>();
         asGameMusic.clip = gameMusic;

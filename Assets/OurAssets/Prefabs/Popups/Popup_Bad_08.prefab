@@ -32,10 +32,10 @@ RectTransform:
   m_Father: {fileID: 1904591590721006603}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.6}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.100000024, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7009240012636801281
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SELL 1 LIFE FOR 1000$?
+  m_text: THE MANDARIN NOW STREAMING
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 353e428d9dbbd594c959d45dbc7f9ba0, type: 2}
   m_sharedMaterial: {fileID: -7402957235188514728, guid: 353e428d9dbbd594c959d45dbc7f9ba0, type: 2}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.15
+  m_fontSize: 0.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 2561869458001788757}
   - component: {fileID: 2561869458001788756}
   m_Layer: 8
-  m_Name: Popup_Good_02
+  m_Name: Popup_Bad_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,8 +527,8 @@ MonoBehaviour:
   _openTime: 0.2
   _closeTime: 0.2
   _elasticity: 2
-  _givenLife: -1
-  _givenMoney: 1000
+  _givenLife: 0
+  _givenMoney: -750
 --- !u!1 &2561869458328656609
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: OK!
+  m_text: WATCH  NOW
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 353e428d9dbbd594c959d45dbc7f9ba0, type: 2}
   m_sharedMaterial: {fileID: -7402957235188514728, guid: 353e428d9dbbd594c959d45dbc7f9ba0, type: 2}
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.15
+  m_fontSize: 0.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -853,8 +853,8 @@ RectTransform:
   m_Father: {fileID: 1904591590721006603}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2, y: 0.1}
-  m_AnchorMax: {x: 0.8, y: 0.4}
+  m_AnchorMin: {x: 0.1, y: 0.2}
+  m_AnchorMax: {x: 0.9, y: 0.58}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5195816, b: 0.41176474, a: 1}
+  m_Color: {r: 0.45056072, g: 0.4660322, b: 0.7075472, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
