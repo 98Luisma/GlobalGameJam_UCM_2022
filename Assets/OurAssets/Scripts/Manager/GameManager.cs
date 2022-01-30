@@ -203,8 +203,8 @@ public class GameManager : MonoBehaviour
 #region Events for audio
     public void OnAllPopupsDespawned()
     {
-        _audioManager.ManageAudio(AudioManager.AudioAction.Mute, AudioManager.SoundType.Ads);
-        _audioManager.ManageAudio(AudioManager.AudioAction.ToForeground, AudioManager.SoundType.Game);
+        _audioManager.ManageAudio(AudioManager.AudioAction.Mute, AudioManager.SoundType.AdsMusic);
+        _audioManager.ManageAudio(AudioManager.AudioAction.ToForeground, AudioManager.SoundType.GameMusic);
     }
 
     public void OnEnemyBulletSpawned()
@@ -253,8 +253,8 @@ public class GameManager : MonoBehaviour
     }
     public void OnFirstPopupOpen()
     {
-        _audioManager.ManageAudio(AudioManager.AudioAction.ToBackground, AudioManager.SoundType.Game);
-        _audioManager.ManageAudio(AudioManager.AudioAction.UnMute, AudioManager.SoundType.Ads);
+        _audioManager.ManageAudio(AudioManager.AudioAction.ToBackground, AudioManager.SoundType.GameMusic);
+        _audioManager.ManageAudio(AudioManager.AudioAction.UnMute, AudioManager.SoundType.AdsMusic);
     }
     public void OnPopupOpen()
     {
@@ -278,9 +278,9 @@ public class GameManager : MonoBehaviour
 
     public void OnGameStarted()
     {
-        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.Game);
-        _audioManager.ManageAudio(AudioManager.AudioAction.Mute, AudioManager.SoundType.Ads);
-        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.Ads);
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.GameMusic);
+        _audioManager.ManageAudio(AudioManager.AudioAction.Mute, AudioManager.SoundType.AdsMusic);
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.AdsMusic);
     }
 #endregion
 }

@@ -6,16 +6,27 @@ public class AudioManager : MonoBehaviour
 {
     public enum SoundType
     {
-        Game,
-        Ads,
-        Bullet,
+        GameMusic,
+        AdsMusic,
+        BossMusic,
+        PopupOpen,
+        PopupClose,
+        PopupBuy,
+        LifeRestored,
+        Damaged,
         Explosion,
-        Clic
+        EnemyDestroyed,
+        PlayerBullet,
+        EnemyBullet,
+        BossBullet,
+        BossTurbines
+
     }
 
     public enum AudioAction
     {
         Play,
+        Next,
         UnPause,
         ToBackground,
         ToForeground,
@@ -31,9 +42,18 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Clips")]
     [SerializeField] private AudioClip gameMusic;
     [SerializeField] private AudioClip adsMusic;
-    [SerializeField] private AudioClip bulletSFX;
-    [SerializeField] private AudioClip explosionSFX;
-    [SerializeField] private AudioClip clicSFX;
+    [SerializeField] private AudioClip bossMusic;
+    [SerializeField] private AudioClip popupOpen;
+    [SerializeField] private AudioClip popupClose;
+    [SerializeField] private AudioClip popupBuy;
+    [SerializeField] private AudioClip lifeRestored;
+    [SerializeField] private AudioClip damaged;
+    [SerializeField] private AudioClip explosion;
+    [SerializeField] private AudioClip enemyDestroyed;
+    [SerializeField] private AudioClip playerBullet;
+    [SerializeField] private AudioClip enemyBullet;
+    [SerializeField] private AudioClip bossBullet;
+    [SerializeField] private AudioClip bossTurbines;
 
     [Header("Volume")]
     
@@ -44,12 +64,9 @@ public class AudioManager : MonoBehaviour
     private GameObject audioManagerGO = null;
     private AudioSource asGameMusic;
     private AudioSource asAdsMusic;
-    private AudioSource asBulletSFX;
-    private AudioSource asExplosionSFX;
-    private AudioSource asClicSFX;
+    private AudioSource asBossTurbines;
 
     private ObjectPool<PoolableAudio> _sourcePool;
-
     
     private static AudioManager _instance;
     public static AudioManager Instance { get => _instance; }
@@ -64,7 +81,6 @@ public class AudioManager : MonoBehaviour
         }
         _instance = this;
         // End of singleton implementation
-
         _sourcePool = new ObjectPool<PoolableAudio>(_poolableAudioPrefab, 10);
     }
     // Start is called before the first frame update
@@ -86,64 +102,119 @@ public class AudioManager : MonoBehaviour
         asAdsMusic.playOnAwake = false;
         asAdsMusic.Stop();
 
-        asBulletSFX = audioManagerGO.AddComponent<AudioSource>();
-        asBulletSFX.clip = bulletSFX;
-        asBulletSFX.loop = false;
-        asBulletSFX.volume = foregroundVol;
-        asBulletSFX.Stop();
-
-        asExplosionSFX = audioManagerGO.AddComponent<AudioSource>();
-        asExplosionSFX.clip = explosionSFX;
-        asExplosionSFX.loop = false;
-        asExplosionSFX.volume = foregroundVol;
-        asExplosionSFX.Stop();
-
-        asClicSFX = audioManagerGO.AddComponent<AudioSource>();
-        asClicSFX.clip = clicSFX;
-        asClicSFX.loop = false;
-        asClicSFX.volume = foregroundVol;
-        asClicSFX.Stop();
+        asBossTurbines = audioManagerGO.AddComponent<AudioSource>();
+        asBossTurbines.clip = bossTurbines;
+        asBossTurbines.loop = true;
+        asBossTurbines.volume = effectsVol;
+        asBossTurbines.playOnAwake = false;
+        asBossTurbines.Stop();
 
     }
 
     public void ManageAudio(AudioAction action, SoundType type)
     {
         AudioSource source = null;
+        PoolableAudio audio = _sourcePool.RequestObject();
         switch (type)
         {
-            case SoundType.Game:
+            // Not from pull
+            case SoundType.GameMusic:
                 source = asGameMusic;
                 break;
-            case SoundType.Ads:
+            case SoundType.AdsMusic:
                 source = asAdsMusic;
                 break;
-            case SoundType.Bullet:
-                PoolableAudio audio = _sourcePool.RequestObject();
-                audio.DeactivateInSeconds(bulletSFX.length);
+            case SoundType.BossTurbines:
+                source = asBossTurbines;
+                break;
+
+            // From pull
+            case SoundType.PopupOpen:
+                audio.DeactivateInSeconds(popupOpen.length);
                 source = audio.AudioSrc;
-                
-                source.clip = bulletSFX;
+
+                source.clip = popupOpen;
+                source.loop = false;
+                source.volume = effectsVol;
+                break;
+            case SoundType.PopupClose:
+                audio.DeactivateInSeconds(popupClose.length);
+                source = audio.AudioSrc;
+
+                source.clip = popupClose;
+                source.loop = false;
+                source.volume = effectsVol;
+                break;
+            case SoundType.PopupBuy:
+                audio.DeactivateInSeconds(popupBuy.length);
+                source = audio.AudioSrc;
+
+                source.clip = popupBuy;
+                source.loop = false;
+                source.volume = effectsVol;
+                break;
+            case SoundType.LifeRestored:
+                audio.DeactivateInSeconds(lifeRestored.length);
+                source = audio.AudioSrc;
+
+                source.clip = lifeRestored;
+                source.loop = false;
+                source.volume = effectsVol;
+                break;
+            case SoundType.Damaged:
+                audio.DeactivateInSeconds(damaged.length);
+                source = audio.AudioSrc;
+
+                source.clip = damaged;
                 source.loop = false;
                 source.volume = effectsVol;
                 break;
             case SoundType.Explosion:
-                source = asExplosionSFX;
+                audio.DeactivateInSeconds(explosion.length);
+                source = audio.AudioSrc;
 
-                source.clip = explosionSFX;
+                source.clip = explosion;
                 source.loop = false;
                 source.volume = effectsVol;
                 break;
-            case SoundType.Clic:
-                source = asClicSFX;
+            case SoundType.EnemyDestroyed:
+                audio.DeactivateInSeconds(enemyDestroyed.length);
+                source = audio.AudioSrc;
 
-                source.clip = clicSFX;
+                source.clip = enemyDestroyed;
+                source.loop = false;
+                source.volume = effectsVol;
+                break;
+            case SoundType.PlayerBullet:
+                audio.DeactivateInSeconds(playerBullet.length);
+                source = audio.AudioSrc;
+
+                source.clip = playerBullet;
+                source.loop = false;
+                source.volume = effectsVol;
+                break;
+            case SoundType.EnemyBullet:
+                audio.DeactivateInSeconds(enemyBullet.length);
+                source = audio.AudioSrc;
+
+                source.clip = enemyBullet;
+                source.loop = false;
+                source.volume = effectsVol;
+                break;
+            case SoundType.BossBullet:
+                audio.DeactivateInSeconds(bossBullet.length);
+                source = audio.AudioSrc;
+
+                source.clip = bossBullet;
                 source.loop = false;
                 source.volume = effectsVol;
                 break;
             
         }
 
-        if (type == SoundType.Clic || type == SoundType.Explosion || type == SoundType.Bullet) // Sound Effects (Pull)
+        if (type == SoundType.PopupOpen || type == SoundType.PopupClose || type == SoundType.PopupBuy 
+            || type == SoundType.LifeRestored || type == SoundType.Damaged || type == SoundType.Explosion 
+            || type == SoundType.PlayerBullet || type == SoundType.EnemyBullet || type == SoundType.BossBullet) // Sound Effects (Pull)
         {
             switch (action)
             {
@@ -181,7 +252,7 @@ public class AudioManager : MonoBehaviour
                 
             }
         }   
-        
+
     }
 
 }
