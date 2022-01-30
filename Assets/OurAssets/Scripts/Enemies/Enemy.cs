@@ -87,6 +87,7 @@ public abstract class Enemy : MonoBehaviour
         }
         
         GameManager.Instance.OnEnemyDestroyed();
+        EnemyDeath();
         Destroy(gameObject);
     }
 
@@ -127,4 +128,9 @@ public abstract class Enemy : MonoBehaviour
     /// Called on Update. Write the enemy trajectory here.
     ///</summary>
     protected virtual void MoveEnemy(float dt){}
+
+    ///<summary>
+    /// Called right before the enemy is destroyed.
+    ///</summary>
+    protected virtual void EnemyDeath(){}
 }

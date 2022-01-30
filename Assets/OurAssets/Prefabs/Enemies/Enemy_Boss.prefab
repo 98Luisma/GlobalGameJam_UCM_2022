@@ -293,6 +293,7 @@ MonoBehaviour:
   _periodOffset: 0.25
   _lockOnPlayer: 1
   _meshTransform: {fileID: 3764322768406273016}
+  _isBoss: 1
 --- !u!1 &3164612538861206247
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +342,7 @@ MonoBehaviour:
   _periodOffset: 0
   _lockOnPlayer: 1
   _meshTransform: {fileID: 1635495664846486897}
+  _isBoss: 1
 --- !u!1 &3609169595800170601
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,6 +884,7 @@ MonoBehaviour:
   _periodOffset: 0.75
   _lockOnPlayer: 1
   _meshTransform: {fileID: 2906884934834886802}
+  _isBoss: 1
 --- !u!1 &7758333944153530659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1128,7 @@ MonoBehaviour:
   _periodOffset: 0.5
   _lockOnPlayer: 1
   _meshTransform: {fileID: 3843468321562445865}
+  _isBoss: 1
 --- !u!1 &9021550487702596656
 GameObject:
   m_ObjectHideFlags: 0
