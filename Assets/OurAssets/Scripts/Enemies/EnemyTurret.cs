@@ -58,6 +58,8 @@ public class EnemyTurret : MonoBehaviour
             transform.position.z
         );
         newBullet.Shoot(shootDir);
+
+        GameManager.Instance.OnEnemyBulletSpawned();
     }
 
     public void StartShooting() => _shouldShoot = true;

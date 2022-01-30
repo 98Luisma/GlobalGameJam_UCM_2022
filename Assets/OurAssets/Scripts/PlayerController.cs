@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Fire1") && rayCast.collider.CompareTag("RayCastPlane"))
             {
                 _bulletPool.RequestObject(transform.position).SetupBullet(rayCast.point, shootRadius);
+                GameManager.Instance.OnPlayerBulletSpawned();
             }
         }
     }

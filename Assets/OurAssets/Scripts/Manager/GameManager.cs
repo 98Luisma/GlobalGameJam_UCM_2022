@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerController _player = null;
 
     [Header("HUD")]
-    [SerializeField] private Canvas _mainCanvas = null;
     [SerializeField] private TextMeshProUGUI scoreUI = null;
     [SerializeField] private TextMeshProUGUI moneyUI = null;
     [SerializeField] private Transform _lifeLayoutGroup = null;
@@ -75,8 +74,16 @@ public class GameManager : MonoBehaviour
             Image newImage = Instantiate(_lifeImagePrefab, _lifeLayoutGroup);
             _livesDisplay.Add(newImage);
         }
+
+        OnGameStarted();
     }
 
+    public EnemyBullet RequestEnemyBullet()
+    {
+        return _enemySpawner.RequestEnemyBullet();
+    }
+
+#region Points methods
     public void AddMoney(int amount)
     {
         money += amount;
@@ -96,6 +103,15 @@ public class GameManager : MonoBehaviour
         life += amount;
         life = Mathf.Max(0, life);
         VolatileStorage.GetInstance().lives = life;
+
+        if (amount < 0)
+        {
+            OnPlayerDamaged();
+        }
+        else if (amount > 0)
+        {
+            OnPlayerHealthRestored();
+        }
 
         // Debug.Log(life);
         if (life <= 0)
@@ -123,11 +139,6 @@ public class GameManager : MonoBehaviour
         VolatileStorage.GetInstance().score = score;
     }
 
-    public EnemyBullet RequestEnemyBullet()
-    {
-        return _enemySpawner.RequestEnemyBullet();
-    }
-
     private void KillPlayer()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("LoseMenu");
@@ -142,4 +153,67 @@ public class GameManager : MonoBehaviour
     {
         scoreUI.text = "Kills: " + score;
     }
+#endregion
+
+#region Events for audio
+    public void OnAllPopupsDespawned()
+    {
+        // TODO: Roberto rellena esto
+    }
+
+    public void OnEnemyBulletSpawned()
+    {
+
+    }
+
+    public void OnPlayerBulletSpawned()
+    {
+
+    }
+
+    public void OnPlayerBulletExplosion()
+    {
+        
+    }
+
+    public void OnEnemyDestroyed()
+    {
+
+    }
+
+    public void OnPlayerDamaged()
+    {
+
+    }
+
+    public void OnPlayerHealthRestored()
+    {
+        
+    }
+
+    public void OnPopupOpen()
+    {
+
+    }
+
+    public void OnPopupClosed()
+    {
+
+    }
+
+    public void OnPopupBought()
+    {
+
+    }
+
+    public void OnDifficultyIncreased()
+    {
+
+    }
+
+    public void OnGameStarted()
+    {
+
+    }
+#endregion
 }

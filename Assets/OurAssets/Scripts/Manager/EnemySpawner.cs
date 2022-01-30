@@ -29,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
     private float _elapsedTime = 0f;
     private int _difficultyLevel = 0;
     private float _timeUntilNextSpawn;
+    private int _lastDifficultyLevel = 0;
 
     private int _sequencesSinceLastBossFight = 0;
     private bool _isInBossBattle = false;
@@ -67,6 +68,11 @@ public class EnemySpawner : MonoBehaviour
         // Calculate the difficulty
         _elapsedTime += Time.deltaTime;
         _difficultyLevel = (int)(_elapsedTime / _secondsPerDifficultyLevel);
+        if (_difficultyLevel > _lastDifficultyLevel)
+        {
+            _lastDifficultyLevel = _difficultyLevel;
+            GameManager.Instance.OnDifficultyIncreased();
+        }
         
         _spawnTimer += Time.deltaTime;
         if (_spawnTimer >= _timeUntilNextSpawn)

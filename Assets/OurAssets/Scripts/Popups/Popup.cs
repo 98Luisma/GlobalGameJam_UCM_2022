@@ -52,6 +52,7 @@ public class Popup : MonoBehaviour
     private void OpenPopup()
     {
         StartCoroutine(InnerCoroutine());
+        GameManager.Instance.OnPopupOpen();
 
         // Definition of the Coroutine called above
         IEnumerator InnerCoroutine()
@@ -84,9 +85,9 @@ public class Popup : MonoBehaviour
         IEnumerator InnerCoroutine()
         {
             float timer = 0f;
-            while (timer <= _openTime)
+            while (timer <= _closeTime)
             {
-                float x = timer / _openTime;
+                float x = timer / _closeTime;
                 float t = (_elasticity+1f) * x*x*x - _elasticity * x*x;
                 _canvasParent.localScale = new Vector3(1f, 1f-t, 1f);
 
@@ -105,6 +106,7 @@ public class Popup : MonoBehaviour
         if (!_isClosing)
         {
             ClosePopup();
+            GameManager.Instance.OnPopupClosed();
         }
     }
 
@@ -115,6 +117,7 @@ public class Popup : MonoBehaviour
             GameManager.Instance.AddMoney(_givenMoney);
             GameManager.Instance.AddLife(_givenLife);
             ClosePopup();
+            GameManager.Instance.OnPopupBought();
         }
     }
 

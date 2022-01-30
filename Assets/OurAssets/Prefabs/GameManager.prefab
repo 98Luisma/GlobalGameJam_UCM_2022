@@ -90,7 +90,7 @@ MonoBehaviour:
   _maxSimultaneousPopups: 10
   _spawnOnCursorProbability: 0.3
   _maxSpawnAttempts: 5
-  _secondsPerDifficultyLevel: 15
+  _secondsPerDifficultyLevel: 20
   _reducedWaitPerDifficultyLevel: 0.75
   _minWaitBetweenPopups: 1
 --- !u!114 &6127214726805618068
@@ -119,7 +119,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 17bf08a167daac64faaf7592bee7a37b, type: 2}
   _bossSequence: {fileID: 11400000, guid: 863340d26ca4c9a4b9840031575fa657, type: 2}
   _extraBossOffsetZ: 5
-  _secondsPerDifficultyLevel: 15
+  _secondsPerDifficultyLevel: 20
   _maxEnemiesPerSequence: 6
   _reducedWaitPerDifficultyLevel: 0.5
   _minWaitBetweenSequences: 4

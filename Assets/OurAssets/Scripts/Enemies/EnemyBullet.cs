@@ -17,7 +17,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(DeactivateAfterSeconds(10f));
+        StartCoroutine(DeactivateAfterSeconds(_maxLifetime));
     }
 
     private void Update()
@@ -44,8 +44,6 @@ public class EnemyBullet : MonoBehaviour
         GameManager.Instance.AddLife(-_damage);
 
         Instantiate(_explosionParticles, transform.position, Quaternion.identity);
-
-        // TODO: Play a sound
 
         StopAllCoroutines();
         gameObject.SetActive(false);

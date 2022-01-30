@@ -30,6 +30,7 @@ public class Bullet : MonoBehaviour
         if (Vector3.MoveTowards(transform.position, shootPoint, speed * Time.deltaTime) == transform.position)
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
+            GameManager.Instance.OnPlayerBulletExplosion();
             Collider[] sphereCast;
             sphereCast = Physics.OverlapSphere(shootPoint, shootRadius);
 

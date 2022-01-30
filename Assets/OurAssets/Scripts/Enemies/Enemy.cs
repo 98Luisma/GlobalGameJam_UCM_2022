@@ -86,6 +86,7 @@ public abstract class Enemy : MonoBehaviour
             Instantiate(_deathParticles, transform.position, Quaternion.identity);
         }
         
+        GameManager.Instance.OnEnemyDestroyed();
         Destroy(gameObject);
     }
 

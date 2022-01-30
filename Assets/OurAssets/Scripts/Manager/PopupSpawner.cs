@@ -155,6 +155,12 @@ public class PopupSpawner : MonoBehaviour
     private void PopupDespawned(Popup popup)
     {
         --_spawnedPopups;
+        _spawnedPopups = Mathf.Max(_spawnedPopups, 0);
         popup.OnPopupDestroyed -= PopupDespawned;
+
+        if (_spawnedPopups == 0)
+        {
+            GameManager.Instance.OnAllPopupsDespawned();
+        }
     }
 }
