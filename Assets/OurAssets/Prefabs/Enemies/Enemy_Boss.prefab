@@ -821,7 +821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _pointsAwardedOnDeath: 1
-  _moneyAwardedOnDeath: 3000
+  _moneyAwardedOnDeath: 1000
   _turrets:
   - {fileID: 8969833001164177261}
   - {fileID: 6274642643902563454}

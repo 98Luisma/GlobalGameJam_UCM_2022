@@ -528,7 +528,7 @@ MonoBehaviour:
   _closeTime: 0.2
   _elasticity: 2
   _givenLife: 0
-  _givenMoney: 500
+  _givenMoney: 200
 --- !u!1 &2561869458328656609
 GameObject:
   m_ObjectHideFlags: 0
