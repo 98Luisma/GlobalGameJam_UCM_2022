@@ -195,7 +195,7 @@ public class AudioManager : MonoBehaviour
 
                 source.clip = enemyDestroyed;
                 source.loop = false;
-                source.volume = effectsVol;
+                source.volume = effectsVol * 0.5f;
                 break;
             case SoundType.PlayerBullet:
                 audio.DeactivateInSeconds(playerBullet.length);
