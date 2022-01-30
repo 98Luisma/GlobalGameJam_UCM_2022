@@ -174,8 +174,8 @@ MonoBehaviour:
   gameMusic: {fileID: 8300000, guid: 34abe90740667354caa9ca2dcea4a5b4, type: 3}
   adsMusic: {fileID: 8300000, guid: d6af58ce2f4de134b9890b7d7d36c2d5, type: 3}
   bossMusic: {fileID: 8300000, guid: c02f734f24c77774ba2a0dcf71dd601f, type: 3}
-  popupOpen: {fileID: 0}
-  popupClose: {fileID: 0}
+  popupOpen: {fileID: 8300000, guid: 5bbb14e5ebe363643b0024ab0ab627f6, type: 3}
+  popupClose: {fileID: 8300000, guid: 96900ed12bf316d47ba48fee4096876d, type: 3}
   popupBuy: {fileID: 8300000, guid: 9a7302817635b7444895faab26642583, type: 3}
   lifeRestored: {fileID: 8300000, guid: 038014019f9611d43a4e6fc0a9f9b061, type: 3}
   damaged: {fileID: 8300000, guid: 26b983fa481bb994fa6a1cdf1a056834, type: 3}
