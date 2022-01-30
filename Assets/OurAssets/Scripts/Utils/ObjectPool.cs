@@ -26,7 +26,7 @@ public class ObjectPool<T> where T : Component
         // Find the first not-active object in the pool
         foreach (T obj in _pooledObjects)
         {
-            if (!obj.gameObject.activeSelf)
+            if (obj && !obj.gameObject.activeSelf)
             {
                 obj.gameObject.SetActive(true);
                 return obj;

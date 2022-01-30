@@ -21,7 +21,6 @@ public class PopupSpawner : MonoBehaviour
     private bool _shouldSpawn = false;
     private float _spawnTimer = 0f;
     private int _spawnedPopups = 0;
-    private bool _spawnedAtLeastOne = false;
 
     private float _elapsedTime = 0f;
     private int _difficultyLevel = 0;
@@ -121,10 +120,9 @@ public class PopupSpawner : MonoBehaviour
         ++_spawnedPopups;
         newPopup.OnPopupDestroyed += PopupDespawned;
 
-        if (!_spawnedAtLeastOne)
+        if (_spawnedPopups == 1)
         {
             GameManager.Instance.OnFirstPopupOpen();
-            _spawnedAtLeastOne = true;
         }
     }
 
