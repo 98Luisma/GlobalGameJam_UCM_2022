@@ -83,11 +83,8 @@ public class AudioManager : MonoBehaviour
         _instance = this;
         // End of singleton implementation
         _sourcePool = new ObjectPool<PoolableAudio>(_poolableAudioPrefab, 100);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        audioManagerGO = Object.Instantiate(audioManagerPF,Vector3.zero,Quaternion.identity);
+
+        audioManagerGO = Object.Instantiate(audioManagerPF, Vector3.zero, Quaternion.identity);
 
         asGameMusic = audioManagerGO.AddComponent<AudioSource>();
         asGameMusic.clip = gameMusic;
@@ -116,6 +113,11 @@ public class AudioManager : MonoBehaviour
         asBossTurbines.volume = effectsVol;
         asBossTurbines.playOnAwake = false;
         asBossTurbines.Stop();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        
 
     }
 
