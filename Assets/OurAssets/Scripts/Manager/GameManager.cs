@@ -209,47 +209,56 @@ public class GameManager : MonoBehaviour
 
     public void OnEnemyBulletSpawned()
     {
-        
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.EnemyBullet);
     }
 
     public void OnPlayerBulletSpawned()
     {
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.PlayerBullet);
 
     }
 
     public void OnPlayerBulletExplosion()
     {
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.Explosion);
         
     }
 
     public void OnBossBulletSpawned()
     {
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.BossBullet);
 
     }
 
     public void OnEnemyDestroyed()
     {
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.EnemyDestroyed);
 
     }
 
     public void OnPlayerDamaged()
     {
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.Damaged);
 
     }
 
     public void OnBossSpawned()
     {
-
+        _audioManager.ManageAudio(AudioManager.AudioAction.Stop, AudioManager.SoundType.GameMusic);
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.BossMusic);
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.BossTurbines);
     }
 
     public void OnBossDefeated()
     {
-        
+        _audioManager.ManageAudio(AudioManager.AudioAction.Stop, AudioManager.SoundType.BossMusic);
+        _audioManager.ManageAudio(AudioManager.AudioAction.Stop, AudioManager.SoundType.BossTurbines);
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.GameMusic);
     }
 
     public void OnPlayerHealthRestored()
     {
-        
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.LifeRestored);
     }
     public void OnFirstPopupOpen()
     {
@@ -258,22 +267,22 @@ public class GameManager : MonoBehaviour
     }
     public void OnPopupOpen()
     {
-        
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.PopupOpen);
     }
 
     public void OnPopupClosed()
     {
-
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.PopupClose);
     }
 
     public void OnPopupBought()
     {
-
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.PopupBuy);
     }
 
     public void OnDifficultyIncreased()
     {
-
+        _audioManager.ManageAudio(AudioManager.AudioAction.Next, AudioManager.SoundType.AdsMusic);
     }
 
     public void OnGameStarted()

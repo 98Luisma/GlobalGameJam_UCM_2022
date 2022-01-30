@@ -65,6 +65,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource asGameMusic;
     private AudioSource asAdsMusic;
     private AudioSource asBossTurbines;
+    private AudioSource asBossMusic;
 
     private ObjectPool<PoolableAudio> _sourcePool;
     
@@ -102,6 +103,13 @@ public class AudioManager : MonoBehaviour
         asAdsMusic.playOnAwake = false;
         asAdsMusic.Stop();
 
+        asBossMusic = audioManagerGO.AddComponent<AudioSource>();
+        asBossMusic.clip = bossMusic;
+        asBossMusic.loop = true;
+        asBossMusic.volume = foregroundVol;
+        asBossMusic.playOnAwake = false;
+        asBossMusic.Stop();
+
         asBossTurbines = audioManagerGO.AddComponent<AudioSource>();
         asBossTurbines.clip = bossTurbines;
         asBossTurbines.loop = true;
@@ -115,6 +123,7 @@ public class AudioManager : MonoBehaviour
     {
         AudioSource source = null;
         PoolableAudio audio = _sourcePool.RequestObject();
+        Debug.Log("ManageAudio with action " + action + " and type " + type + ".");
         switch (type)
         {
             // Not from pull
@@ -126,6 +135,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case SoundType.BossTurbines:
                 source = asBossTurbines;
+                break;
+            case SoundType.BossMusic:
+                source = asBossMusic;
                 break;
 
             // From pull
@@ -208,6 +220,9 @@ public class AudioManager : MonoBehaviour
                 source.clip = bossBullet;
                 source.loop = false;
                 source.volume = effectsVol;
+                break;
+            default:
+                Debug.LogError("Default case with action " + action + " and type " + type + ".");
                 break;
             
         }
