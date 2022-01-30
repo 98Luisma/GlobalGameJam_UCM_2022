@@ -261,12 +261,9 @@ public class AudioManager : MonoBehaviour
                     source.Stop();
                     break;
                 case AudioAction.Next:
-                    Debug.Log("ManageAudio with action " + action + " and type " + type + ".");
                     if (type == SoundType.AdsMusic)
                     {   
-                        Debug.LogError("1: " + adMusicTrack);
                         adMusicTrack++;
-                        Debug.LogError("2: " + adMusicTrack);
                         asAdsMusic.clip = adsMusic[adMusicTrack%adsMusic.Count];
                         asAdsMusic.Play();
                     }
