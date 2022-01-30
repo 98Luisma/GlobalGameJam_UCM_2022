@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
     {
         life += amount;
         life = Mathf.Max(0, life);
+        life = Mathf.Min(life, _maxLife);
         VolatileStorage.GetInstance().lives = life;
 
         if (amount < 0)
