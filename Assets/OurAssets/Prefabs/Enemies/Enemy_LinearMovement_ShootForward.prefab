@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 838136927437865270}
   - component: {fileID: 2462885061520330405}
   m_Layer: 0
-  m_Name: Enemy_LinearMovement
+  m_Name: Enemy_LinearMovement_ShootForward
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,11 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 2
   _pointsAwardedOnDeath: 1
-  _moneyAwardedOnDeath: 100
+  _moneyAwardedOnDeath: 300
   _turrets:
   - {fileID: 8202250547016220705}
   _deathParticles: {fileID: 6192724089161036655, guid: 2860523c3a4635747b9a30befca33a89, type: 3}
-  _lookTowardsMoveDirection: 0
   _speed: 3
 --- !u!65 &2462885061520330405
 BoxCollider:
@@ -112,7 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _period: 1
-  _lockOnPlayer: 1
+  _periodOffset: 0
+  _lockOnPlayer: 0
   _meshTransform: {fileID: 2349623828789957835}
 --- !u!1001 &1022777780609316816
 PrefabInstance:

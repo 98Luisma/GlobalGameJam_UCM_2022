@@ -15,10 +15,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera _mainCamera = null;
     [SerializeField] private PlayerController _player = null;
 
+    [Header("HUD")]
     [SerializeField] private Canvas _mainCanvas = null;
     [SerializeField] private TextMeshProUGUI scoreUI = null;
     [SerializeField] private TextMeshProUGUI moneyUI = null;
-    private Transform lives = null;
+    [SerializeField] private Transform _lifeLayoutGroup = null;
+
+    [Header("Player")]
+    [SerializeField] private int _maxLife = 5;
+    [SerializeField] private Image _lifeImagePrefab = null;
+    [SerializeField] private int _initMoney = 1000;
 
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
@@ -26,6 +32,7 @@ public class GameManager : MonoBehaviour
     private int life;
     private int money;
     private int score;
+    private List<Image> _livesDisplay;
 
 #region Getters
     public Camera MainCamera { get => _mainCamera; }
@@ -50,45 +57,74 @@ public class GameManager : MonoBehaviour
         _popupSpawner.SetShouldSpawn(true);
         _enemySpawner.SetShouldSpawn(true);
 
-        life = 5;
-        money = 1000;
-        moneyUI.text = money.ToString();
+        life = _maxLife;
+        money = _initMoney;
         score = 0;
-        scoreUI.text = score.ToString();
+        DisplayMoney();
+        DisplayScore();
 
-        lives = _mainCanvas.transform.Find("Lives");
+        // Spawn the lives images
+        _livesDisplay = new List<Image>(_maxLife);
+        for (int i=0; i<_maxLife; ++i)
+        {
+            Image newImage = Instantiate(_lifeImagePrefab, _lifeLayoutGroup);
+            _livesDisplay.Add(newImage);
+        }
     }
 
     public void AddMoney(int amount)
     {
         money += amount;
-        moneyUI.text = money.ToString();
+        money = Mathf.Max(0, money);
+        DisplayMoney();
     }
 
     public void AddLife(int amount)
     {
         life += amount;
-        int children = lives.childCount;
+        life = Mathf.Max(0, life);
 
-        for (int i = 0; i < children; ++i)
+        if (life <= 0)
         {
-            if (i < life)
-                lives.transform.GetChild(i).GetComponent<RawImage>().color = Color.white;
-            else
-                lives.transform.GetChild(i).GetComponent<RawImage>().color = Color.black;
+            KillPlayer();
         }
-
-        //_mainCanvas.transform.Find("Lives").Find("Hearth" + totalLives).gameObject.GetComponent<RawImage>().color = Color.black;
+        else
+        {
+            for (int i = 0; i < _maxLife; ++i)
+            {
+                if (i < life-1)
+                    _livesDisplay[i].color = Color.white;
+                else
+                    _livesDisplay[i].color = Color.black;
+            }
+        }
     }
 
     public void AddScore(int amount)
     {
         score += amount;
-        scoreUI.text = score.ToString();
+        score = Mathf.Max(0, score);
+        DisplayScore();
     }
 
     public EnemyBullet RequestEnemyBullet()
     {
         return _enemySpawner.RequestEnemyBullet();
+    }
+
+    private void KillPlayer()
+    {
+        // TODO: Change this?
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LoseMenu");
+    }
+
+    private void DisplayMoney()
+    {
+        moneyUI.text = "Money: " + money;
+    }
+
+    private void DisplayScore()
+    {
+        scoreUI.text = "Kills: " + score;
     }
 }

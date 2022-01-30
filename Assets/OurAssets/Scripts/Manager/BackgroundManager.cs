@@ -11,6 +11,7 @@ public class BackgroundManager : MonoBehaviour
     [SerializeField] private float startZ = 10;
     [SerializeField] private int endAfter = 3;
     [SerializeField] private float depth = 0;
+    [SerializeField] private float speed = 4f;
 
     private List<GameObject> spawnedBlocks = null;
 
@@ -61,7 +62,7 @@ public class BackgroundManager : MonoBehaviour
         {
             if (_blockPrefabs.Count > 0)
             {
-                Vector3 mov = Vector3.back * Time.deltaTime;
+                Vector3 mov = speed * Vector3.back * Time.deltaTime;
                 foreach (GameObject block in spawnedBlocks)
                 {
                     block.transform.position += mov;

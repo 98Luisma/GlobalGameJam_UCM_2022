@@ -6,12 +6,19 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawn")]
     [SerializeField] private float _spawnPositionY = 0f;
-    [SerializeField] private float _spawnSequencePeriod = 5f;
+    [SerializeField] private float _spawnSequencePeriod = 8f;
     [SerializeField] private float _extraOffset = 3f;
     [Header("Enemy references")]
     [SerializeField] private EnemyBullet _enemyBulletPrefab;
     [SerializeField] private EnemySequence[] _enemySequences;
     [SerializeField] private EnemySequence _bossSequence;
+    [SerializeField] private float _extraBossOffsetZ = 5f;
+    [Header("Difficulty")]
+    [SerializeField] private int _secondsPerDifficultyLevel = 15;
+    [SerializeField] private int _maxEnemiesPerSequence = 7;
+    [SerializeField] private float _reducedWaitPerDifficultyLevel = 0.5f;
+    [SerializeField] private float _minWaitBetweenSequences = 4f;
+    [SerializeField] private int _sequencesBetweenBossfights = 10;
     [Header("Debug")]
     [SerializeField] private bool DEBUG_START_WITH_BOSS_BATTLE = false;
 
@@ -19,13 +26,18 @@ public class EnemySpawner : MonoBehaviour
     private float _spawnTimer = 0f;
     private Vector3[] _screenCorners = new Vector3[4];
     private ObjectPool<EnemyBullet> _enemyBulletPool;
+    private float _elapsedTime = 0f;
+    private int _difficultyLevel = 0;
+    private float _timeUntilNextSpawn;
 
+    private int _sequencesSinceLastBossFight = 0;
     private bool _isInBossBattle = false;
     private Enemy _instantiatedBoss = null;
 
     private void Awake()
     {
         _enemyBulletPool = new ObjectPool<EnemyBullet>(_enemyBulletPrefab, 60);
+        _timeUntilNextSpawn = _spawnSequencePeriod;
     }
 
     private void Start()
@@ -51,14 +63,32 @@ public class EnemySpawner : MonoBehaviour
         // Early returns
         if (!_shouldSpawn) return;
         if (_isInBossBattle) return;
+
+        // Calculate the difficulty
+        _elapsedTime += Time.deltaTime;
+        _difficultyLevel = (int)(_elapsedTime / _secondsPerDifficultyLevel);
         
         _spawnTimer += Time.deltaTime;
-        if (_spawnTimer >= _spawnSequencePeriod)
+        if (_spawnTimer >= _timeUntilNextSpawn)
         {
-            // Spawn a random sequence
-            EnemySequence sequence = _enemySequences[Random.Range(0, _enemySequences.Length)];
-            StartCoroutine(SpawnEnemySequence(sequence));
-            _spawnTimer = 0f;
+            if (_sequencesSinceLastBossFight >= _sequencesBetweenBossfights)
+            {
+                StartBossBattle();
+                _sequencesBetweenBossfights = 0;
+            }
+            else
+            {
+                // Spawn a random sequence
+                EnemySequence sequence = _enemySequences[Random.Range(0, _enemySequences.Length)];
+                StartCoroutine(SpawnEnemySequence(sequence));
+                
+                // Prepare the next spawn sequence
+                _spawnTimer = 0f;
+                _timeUntilNextSpawn = sequence.Amount * sequence.DelaySeconds + Mathf.Max(
+                    _minWaitBetweenSequences,
+                    _spawnSequencePeriod - _difficultyLevel * _reducedWaitPerDifficultyLevel
+                );
+            }
         }
     }
 
@@ -67,11 +97,16 @@ public class EnemySpawner : MonoBehaviour
     ///</summary>
     private IEnumerator SpawnEnemySequence(EnemySequence sequence)
     {
-        // All enemies will spawn with the same properties
+        ++_sequencesSinceLastBossFight;
+
+        // All enemies will spawn at the same point
         Vector3 spawnPos = GetSpawnPos(sequence.NormalizedSpawnPosX, sequence.NormalizedSpawnPosZ);
 
+        // Difficulty level based on time
+        int spawnAmount = Mathf.Clamp(sequence.Amount + Random.Range(-2, _difficultyLevel), 1, _maxEnemiesPerSequence);
+
         // Spawn the enemies one by one with a delay
-        for (int i = 0; i < sequence.Amount; ++i)
+        for (int i = 0; i < spawnAmount; ++i)
         {
             Enemy newEnemy = Instantiate(sequence.EnemyPrefab, spawnPos, Quaternion.identity);
 
@@ -109,7 +144,15 @@ public class EnemySpawner : MonoBehaviour
     public void StartBossBattle()
     {
         _isInBossBattle = true;
-        StartCoroutine(SpawnEnemySequence(_bossSequence));
+
+        // Spawn the boss using its sequence
+        Vector3 spawnPos = GetSpawnPos(_bossSequence.NormalizedSpawnPosX, _bossSequence.NormalizedSpawnPosZ);
+        spawnPos += Vector3.forward * _extraBossOffsetZ;
+        _instantiatedBoss = Instantiate(_bossSequence.EnemyPrefab, spawnPos, Quaternion.identity);
+
+        // Initialize the enemy with the correct variables
+        Vector3 initDir = new Vector3(_bossSequence.InitialDirection.x, 0f, _bossSequence.InitialDirection.y);
+        _instantiatedBoss.Initialize(initDir);
 
         // Find the boss (probably very inneficient)
         _instantiatedBoss = FindObjectOfType<BossEnemy>();

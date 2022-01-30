@@ -6,6 +6,7 @@ public class EnemyTurret : MonoBehaviour
 {
     [Header("Shooting")]
     [SerializeField] private float _period = 1f;
+    [SerializeField, Range(0,1)] private float _periodOffset = 0f;
     [Header("Visuals")]
     [SerializeField] private bool _lockOnPlayer = true;
     [SerializeField] private Transform _meshTransform = null;
@@ -19,6 +20,8 @@ public class EnemyTurret : MonoBehaviour
     {
         _playerTransform = GameManager.Instance.Player.transform;
         _enemyTransform = transform.parent;
+
+        _shootTimer = _periodOffset * _period;
     }
 
     private void Update()
@@ -49,7 +52,11 @@ public class EnemyTurret : MonoBehaviour
             : _enemyTransform.forward;
     
         EnemyBullet newBullet = GameManager.Instance.RequestEnemyBullet();
-        newBullet.transform.position = _enemyTransform.position;
+        newBullet.transform.position = new Vector3(
+            transform.position.x,
+            _enemyTransform.position.y,
+            transform.position.z
+        );
         newBullet.Shoot(shootDir);
     }
 

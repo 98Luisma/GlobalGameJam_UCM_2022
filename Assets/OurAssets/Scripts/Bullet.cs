@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    Vector3 shootPoint;
-    float shootRadius;
-    float speed = 15f;
-    float upSpeed = 5f;
-    float maxDistance;
+    [SerializeField] float speed = 15f;
+    [SerializeField] Vector3 shootPoint;
+    [SerializeField] float shootRadius;
+    [SerializeField] float upSpeed = 5f;
+    [SerializeField] float maxDistance;
 
     [SerializeField] private ParticleSystem explosion;
 

@@ -280,7 +280,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   _turretTransform: {fileID: 6329131071737251902}
-  runSpeed: 10
+  runSpeed: 11
 --- !u!1 &5340436516291656112
 GameObject:
   m_ObjectHideFlags: 0

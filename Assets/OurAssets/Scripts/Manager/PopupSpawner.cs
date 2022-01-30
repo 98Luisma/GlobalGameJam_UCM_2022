@@ -5,7 +5,7 @@ using UnityEngine;
 public class PopupSpawner : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private float _spawnPeriod = 1f;
+    [SerializeField] private float _spawnWait = 5f;
     [SerializeField] private Popup[] _popupPrefabs;
     [SerializeField] private Color[] _popupColors;
     [Header("Spawn")]
@@ -13,10 +13,23 @@ public class PopupSpawner : MonoBehaviour
     [SerializeField] private int _maxSimultaneousPopups = 10;
     [SerializeField, Range(0, 1)] private float _spawnOnCursorProbability = 0.2f;
     [SerializeField] private int _maxSpawnAttempts = 5;
+    [Header("Difficulty")]
+    [SerializeField] private int _secondsPerDifficultyLevel = 15;
+    [SerializeField] private float _reducedWaitPerDifficultyLevel = 0.5f;
+    [SerializeField] private float _minWaitBetweenPopups = 2f;
 
     private bool _shouldSpawn = false;
     private float _spawnTimer = 0f;
     private int _spawnedPopups = 0;
+
+    private float _elapsedTime = 0f;
+    private int _difficultyLevel = 0;
+    private float _timeUntilNextSpawn;
+
+    private void Awake()
+    {
+        _timeUntilNextSpawn = _spawnWait;
+    }
 
     private void Update()
     {
@@ -24,12 +37,22 @@ public class PopupSpawner : MonoBehaviour
         if (!_shouldSpawn) return;
         if (_spawnedPopups >= _maxSimultaneousPopups) return;
 
-        // Spawn a popup every _spawnPeriod seconds
+        // Calculate the difficulty
+        _elapsedTime += Time.deltaTime;
+        _difficultyLevel = (int)(_elapsedTime / _secondsPerDifficultyLevel);
+
+        // Spawn a popup every _spawnWait seconds
         _spawnTimer += Time.deltaTime;
-        if (_spawnTimer >= _spawnPeriod)
+        if (_spawnTimer >= _timeUntilNextSpawn)
         {
             SpawnPopup();
+
+            // Prepare the next spawn
             _spawnTimer = 0f;
+            _timeUntilNextSpawn = Mathf.Max(
+                _minWaitBetweenPopups,
+                _spawnWait - _difficultyLevel * _reducedWaitPerDifficultyLevel
+            );
         }
     }
 

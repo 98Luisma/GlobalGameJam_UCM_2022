@@ -750,7 +750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GET MORE LIVES
+  m_text: RESTORE LIVES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 353e428d9dbbd594c959d45dbc7f9ba0, type: 2}
   m_sharedMaterial: {fileID: -7402957235188514728, guid: 353e428d9dbbd594c959d45dbc7f9ba0, type: 2}

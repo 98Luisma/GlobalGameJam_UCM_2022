@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf12badd5c9ae634a8e4bc96e010acee, type: 3}
-  m_Name: LinearEnemies_01
+  m_Name: ShootPlayer_00
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 838136927437865270, guid: 82b8c7409d50aae4fb15ece8f801d5f1, type: 3}
+  _enemyPrefab: {fileID: 838136927437865270, guid: f2eb5cc8ac56fa142accfe91c176118c, type: 3}
   _amount: 3
   _delaySeconds: 1.5
-  _initialDirection: {x: 1, y: 0}
-  _normalizedSpawnPosX: 0
+  _initialDirection: {x: -1, y: 0}
+  _normalizedSpawnPosX: 1
   _normalizedSpawnPosZ: 0.7

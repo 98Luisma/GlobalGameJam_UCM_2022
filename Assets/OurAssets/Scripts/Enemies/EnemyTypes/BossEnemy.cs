@@ -5,13 +5,22 @@ using UnityEngine;
 public class BossEnemy : Enemy
 {
     [Header("Boss Enemy")]
-    [SerializeField] private float _moveToCenterSeconds = 3f;
+    [SerializeField] private float _moveToCenterSeconds = 10f;
+    [SerializeField] private float _startShootingSeconds = 7f;
     [SerializeField] private float _swayPeriod = 5f;
     [SerializeField] private float _swayAmplitude = 10f;
     [SerializeField] private Vector3 _targetPosition = new Vector3(0f, 0f, 7f);
+    [Header("Visuals")]
+    [SerializeField] private Vector3 _rotation = new Vector3(0f, -108.57f, 0f);
 
     private bool _hasReachedCenter = false;
+    private bool _hasStartedShooting = false;
     private float _swayTimer = 0f;
+
+    private void Start()
+    {
+        transform.eulerAngles = _rotation;
+    }
 
     protected override void StartEnemyLogic()
     {
@@ -32,13 +41,25 @@ public class BossEnemy : Enemy
 
     private void MoveTowardsCenter(float dt)
     {
-        transform.position = Vector3.Lerp(_initPosition, _targetPosition, _timeSinceCreation / _moveToCenterSeconds);
+        float x = _timeSinceCreation / _moveToCenterSeconds;
+        float t = 1f - Mathf.Pow(1f-x, 3f);
+        transform.position = Vector3.Lerp(
+            _initPosition,
+            _targetPosition + Vector3.right * _swayAmplitude,
+            t
+        );
+
+        // Start shooting?
+        if (!_hasStartedShooting && _timeSinceCreation >= _startShootingSeconds)
+        {
+            StartShooting();
+            _hasStartedShooting = true;
+        }
 
         // Change state?
         if (_timeSinceCreation >= _moveToCenterSeconds)
         {
             _hasReachedCenter = true;
-            StartShooting();
         }
     }
 
@@ -46,7 +67,7 @@ public class BossEnemy : Enemy
     {
         _swayTimer += dt;
         float angle = 2f * Mathf.PI * _swayTimer / _swayPeriod;
-        float newX = _swayAmplitude * Mathf.Sin(angle);
+        float newX = _swayAmplitude * Mathf.Cos(angle);
         transform.position = new Vector3(newX, 0f, transform.position.z);
     }
 }
