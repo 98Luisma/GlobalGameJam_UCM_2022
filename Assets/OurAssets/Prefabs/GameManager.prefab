@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6127214726805618069}
   - component: {fileID: 6127214726805618068}
   - component: {fileID: 6589026190599434471}
+  - component: {fileID: 660210303481840774}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -49,6 +50,7 @@ MonoBehaviour:
   _popupSpawner: {fileID: 6127214726805618069}
   _enemySpawner: {fileID: 6127214726805618068}
   _backgroundManager: {fileID: 6589026190599434471}
+  _audioManager: {fileID: 660210303481840774}
   _mainCamera: {fileID: 0}
   _player: {fileID: 0}
   scoreUI: {fileID: 0}
@@ -149,3 +151,23 @@ MonoBehaviour:
   endAfter: 6
   depth: -5
   speed: 4
+--- !u!114 &660210303481840774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6127214726805618065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b65a6dbd4e5e4143b642971988d0595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioManagerPF: {fileID: 9116433400222555090, guid: aa4e34a77ac5e614889873129bfa546c, type: 3}
+  gameMusic: {fileID: 8300000, guid: 34abe90740667354caa9ca2dcea4a5b4, type: 3}
+  adsMusic: {fileID: 8300000, guid: d6af58ce2f4de134b9890b7d7d36c2d5, type: 3}
+  bulletSFX: {fileID: 0}
+  explosionSFX: {fileID: 0}
+  clicSFX: {fileID: 0}
+  backgroundVol: 0.2
+  foregroundVol: 1

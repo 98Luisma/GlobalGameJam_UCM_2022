@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PopupSpawner _popupSpawner = null;
     [SerializeField] private EnemySpawner _enemySpawner = null;
     [SerializeField] private BackgroundManager _backgroundManager = null;
+    [SerializeField] private AudioManager _audioManager = null;
 
     [Header("References")]
     [SerializeField] private Camera _mainCamera = null;
@@ -158,12 +159,13 @@ public class GameManager : MonoBehaviour
 #region Events for audio
     public void OnAllPopupsDespawned()
     {
-        // TODO: Roberto rellena esto
+        _audioManager.ManageAudio(AudioManager.AudioAction.Mute, AudioManager.SoundType.Ads);
+        _audioManager.ManageAudio(AudioManager.AudioAction.ToForeground, AudioManager.SoundType.Game);
     }
 
     public void OnEnemyBulletSpawned()
     {
-
+        
     }
 
     public void OnPlayerBulletSpawned()
@@ -190,10 +192,15 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
+    public void OnFirstPopupOpen()
+    {
+        _audioManager.ManageAudio(AudioManager.AudioAction.ToBackground, AudioManager.SoundType.Game);
+        _audioManager.ManageAudio(AudioManager.AudioAction.UnMute, AudioManager.SoundType.Ads);
+    }
     public void OnPopupOpen()
     {
-
+        _audioManager.ManageAudio(AudioManager.AudioAction.ToBackground, AudioManager.SoundType.Game);
+        _audioManager.ManageAudio(AudioManager.AudioAction.UnMute, AudioManager.SoundType.Ads);
     }
 
     public void OnPopupClosed()
@@ -213,7 +220,9 @@ public class GameManager : MonoBehaviour
 
     public void OnGameStarted()
     {
-
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.Game);
+        _audioManager.ManageAudio(AudioManager.AudioAction.Mute, AudioManager.SoundType.Ads);
+        _audioManager.ManageAudio(AudioManager.AudioAction.Play, AudioManager.SoundType.Ads);
     }
 #endregion
 }
