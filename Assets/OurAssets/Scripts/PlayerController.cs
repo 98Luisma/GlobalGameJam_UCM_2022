@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 currentHitPosition;
 
-    float offset = 3f;
+    float offset = 1f;
 
     private void Awake()
     {

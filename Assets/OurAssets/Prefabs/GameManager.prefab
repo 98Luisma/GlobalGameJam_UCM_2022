@@ -51,7 +51,6 @@ MonoBehaviour:
   _backgroundManager: {fileID: 6589026190599434471}
   _mainCamera: {fileID: 0}
   _player: {fileID: 0}
-  _mainCanvas: {fileID: 0}
   scoreUI: {fileID: 0}
   moneyUI: {fileID: 0}
   _lifeLayoutGroup: {fileID: 0}
@@ -141,8 +140,12 @@ MonoBehaviour:
   _blockPrefabs:
   - {fileID: 4343904533076286142, guid: 9046faf3702c12b45a3a42726f4d6fb8, type: 3}
   - {fileID: 6947022038144856807, guid: 71f6899299411fe4383dde23e6b80d26, type: 3}
+  - {fileID: 6947022038144856807, guid: 355a9459845b2954c8a06caabd5120dc, type: 3}
+  - {fileID: 6947022038144856807, guid: d40fe7c69076a634ca57ec36027ab93b, type: 3}
+  - {fileID: 6947022038144856807, guid: dda079be6735bff40aaf035122391881, type: 3}
+  - {fileID: 6947022038144856807, guid: cda38834e6d60754fa567151fa30af96, type: 3}
   _blockZSize: 10
   startZ: 20
-  endAfter: 4
+  endAfter: 6
   depth: -5
   speed: 4
