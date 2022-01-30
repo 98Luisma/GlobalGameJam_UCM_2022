@@ -10,6 +10,7 @@ public class EnemyTurret : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] private bool _lockOnPlayer = true;
     [SerializeField] private Transform _meshTransform = null;
+    [SerializeField] private bool _isBoss = false;
 
     private Transform _playerTransform;
     private Transform _enemyTransform;
@@ -59,7 +60,10 @@ public class EnemyTurret : MonoBehaviour
         );
         newBullet.Shoot(shootDir);
 
-        GameManager.Instance.OnEnemyBulletSpawned();
+        if (_isBoss)
+            GameManager.Instance.OnBossBulletSpawned();
+        else
+            GameManager.Instance.OnEnemyBulletSpawned();
     }
 
     public void StartShooting() => _shouldShoot = true;

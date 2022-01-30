@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreUI = null;
     [SerializeField] private TextMeshProUGUI moneyUI = null;
     [SerializeField] private Transform _lifeLayoutGroup = null;
+    [SerializeField] private float _moneyAnimationSeconds = 0.2f;
+    [SerializeField] private Color _moneyAnimationGoodColor = Color.green;
+    [SerializeField] private Color _moneyAnimationBadColor = Color.red;
 
     [Header("Player")]
     [SerializeField] private int _maxLife = 5;
@@ -33,6 +36,8 @@ public class GameManager : MonoBehaviour
     private int money;
     private int score;
     private List<Image> _livesDisplay;
+
+    private Coroutine _moneyAnimationCoroutine = null;
 
 #region Getters
     public Camera MainCamera { get => _mainCamera; }
@@ -91,12 +96,50 @@ public class GameManager : MonoBehaviour
         money = Mathf.Max(0, money);
         DisplayMoney();
         VolatileStorage.GetInstance().money = money;
+
+        // Play an animation
+        if (amount > 0)
+        {
+            if (_moneyAnimationCoroutine != null)
+            {
+                StopCoroutine(_moneyAnimationCoroutine);
+            }
+            _moneyAnimationCoroutine = StartCoroutine(AddMoneyAnimation(true));
+        }
+        else if (amount < 0) // Don't do it for amount == 0
+        {
+            if (_moneyAnimationCoroutine != null)
+            {
+                StopCoroutine(_moneyAnimationCoroutine);
+            }
+            _moneyAnimationCoroutine = StartCoroutine(AddMoneyAnimation(false));
+        }
         
+        // Lose the game?
         if (money <= 0)
         {
             VolatileStorage.GetInstance().causeoOfDeath = VolatileStorage.CauseOfDeath.Money;
             KillPlayer();
         }
+    }
+
+    private IEnumerator AddMoneyAnimation(bool good)
+    {
+        moneyUI.color = good ? _moneyAnimationGoodColor : _moneyAnimationBadColor;
+
+        float timer = 0f;
+        float initFontSize = moneyUI.fontSize;
+        while (timer <= _moneyAnimationSeconds)
+        {
+            float angle = Mathf.PI * timer / _moneyAnimationSeconds;
+            moneyUI.fontSize = initFontSize + 16f * Mathf.Sin(angle);
+            
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        moneyUI.fontSize = initFontSize;
+        moneyUI.color = Color.white;
     }
 
     public void AddLife(int amount)
@@ -178,6 +221,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void OnBossBulletSpawned()
+    {
+
+    }
+
     public void OnEnemyDestroyed()
     {
 
@@ -186,6 +234,16 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDamaged()
     {
 
+    }
+
+    public void OnBossSpawned()
+    {
+
+    }
+
+    public void OnBossDefeated()
+    {
+        
     }
 
     public void OnPlayerHealthRestored()

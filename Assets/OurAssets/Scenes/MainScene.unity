@@ -369,10 +369,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1268905782}
     - target: {fileID: 6127214726805618070, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
-      propertyPath: _mainCanvas
-      value: 
-      objectReference: {fileID: 1463247192}
-    - target: {fileID: 6127214726805618070, guid: c65bc0cdbf8217f4fb16c2c405b1e441, type: 3}
       propertyPath: _lifeLayoutGroup
       value: 
       objectReference: {fileID: 1509854046}
@@ -672,11 +668,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47ac8083f3e5eb94890d22e6c3176de5, type: 3}
---- !u!223 &1463247192 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 216592946973243947, guid: 47ac8083f3e5eb94890d22e6c3176de5, type: 3}
-  m_PrefabInstance: {fileID: 1463247191}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1463247193 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5256979832731836216, guid: 47ac8083f3e5eb94890d22e6c3176de5, type: 3}

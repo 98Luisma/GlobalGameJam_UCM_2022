@@ -13,8 +13,7 @@ public class PlayerController : MonoBehaviour
     private Camera _camera;
     private ObjectPool<Bullet> _bulletPool;
 
-    float horizontalMove = 0f;
-    float verticalMove = 0f;
+    Vector2 moveDirection = Vector2.zero;
 
     float shootRadius = 2f;
 
@@ -36,8 +35,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        verticalMove = Input.GetAxisRaw("Vertical") * runSpeed;
+        float horizontalMove = Input.GetAxisRaw("Horizontal");
+        float verticalMove = Input.GetAxisRaw("Vertical");
+        moveDirection = new Vector2(horizontalMove, verticalMove).normalized * runSpeed;
 
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         // Debug.DrawRay(ray.origin, ray.direction * 25, Color.yellow, 5);
@@ -63,9 +63,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (horizontalMove != 0.0f)
+        if (moveDirection.x != 0.0f)
         {
-            Quaternion target = Quaternion.Euler(0, 0, (-1) * Mathf.Sign(horizontalMove) * 40);
+            Quaternion target = Quaternion.Euler(0, 0, (-1) * Mathf.Sign(moveDirection.x) * 40);
             transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.fixedDeltaTime * 5.0f);
         } else
         {
@@ -75,20 +75,20 @@ public class PlayerController : MonoBehaviour
 
         if 
         (
-            _camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime + offset, 0, 0 )) &&
-            _camera.IsPointInBounds(transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime - offset, 0, 0 ))
+            _camera.IsPointInBounds(transform.position + new Vector3(moveDirection.x * Time.fixedDeltaTime + offset, 0, 0 )) &&
+            _camera.IsPointInBounds(transform.position + new Vector3(moveDirection.x * Time.fixedDeltaTime - offset, 0, 0 ))
         )
         {
-            transform.position = transform.position + new Vector3(horizontalMove * Time.fixedDeltaTime, 0, 0);
+            transform.position = transform.position + new Vector3(moveDirection.x * Time.fixedDeltaTime, 0, 0);
         }
 
         if
         (
-            _camera.IsPointInBounds(transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime + offset)) &&
-            _camera.IsPointInBounds(transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime - offset))
+            _camera.IsPointInBounds(transform.position + new Vector3(0, 0, moveDirection.y * Time.fixedDeltaTime + offset)) &&
+            _camera.IsPointInBounds(transform.position + new Vector3(0, 0, moveDirection.y * Time.fixedDeltaTime - offset))
         )
         {
-            transform.position = transform.position + new Vector3(0, 0, verticalMove * Time.fixedDeltaTime);
+            transform.position = transform.position + new Vector3(0, 0, moveDirection.y * Time.fixedDeltaTime);
         }
     }
 

@@ -20,6 +20,7 @@ public class BossEnemy : Enemy
     private void Start()
     {
         transform.eulerAngles = _rotation;
+        GameManager.Instance.OnBossSpawned();
     }
 
     protected override void StartEnemyLogic()
@@ -69,5 +70,10 @@ public class BossEnemy : Enemy
         float angle = 2f * Mathf.PI * _swayTimer / _swayPeriod;
         float newX = _swayAmplitude * Mathf.Cos(angle);
         transform.position = new Vector3(newX, 0f, transform.position.z);
+    }
+
+    protected override void EnemyDeath()
+    {
+        GameManager.Instance.OnBossDefeated();
     }
 }

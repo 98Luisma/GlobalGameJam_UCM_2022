@@ -56,6 +56,9 @@ MonoBehaviour:
   scoreUI: {fileID: 0}
   moneyUI: {fileID: 0}
   _lifeLayoutGroup: {fileID: 0}
+  _moneyAnimationSeconds: 0.3
+  _moneyAnimationGoodColor: {r: 0, g: 1, b: 0, a: 1}
+  _moneyAnimationBadColor: {r: 1, g: 0, b: 0, a: 1}
   _maxLife: 12
   _lifeImagePrefab: {fileID: 3827248212762530014, guid: b7180a2bc60f4ee4998ceb4d51ae82c9, type: 3}
   _initMoney: 1000
@@ -80,6 +83,8 @@ MonoBehaviour:
   - {fileID: 2561869458001788756, guid: 7d54d51f46d450243b66c52117a4b57f, type: 3}
   - {fileID: 2561869458001788756, guid: 5c2435a6014b1354a9786ea79b3527d0, type: 3}
   - {fileID: 2561869458001788756, guid: 12fc162e10a2e8b4d9fb2ce9b2949193, type: 3}
+  - {fileID: 2561869458001788756, guid: d0705d3d5f957ef468ebdcc3d7f30959, type: 3}
+  - {fileID: 2561869458001788756, guid: d49654abdea24054d820990b0f0fa249, type: 3}
   _popupColors:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0, g: 1, b: 0, a: 0}
