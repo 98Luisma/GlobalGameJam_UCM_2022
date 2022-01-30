@@ -36,6 +36,7 @@ public class EnemyBullet : MonoBehaviour
     public void Shoot(Vector3 direction)
     {
         _moveDir = direction;
+        transform.LookAt(transform.position + direction);
     }
 
     private void HitPlayer()

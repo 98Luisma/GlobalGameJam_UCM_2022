@@ -74,7 +74,7 @@ public class EnemySpawner : MonoBehaviour
             if (_sequencesSinceLastBossFight >= _sequencesBetweenBossfights)
             {
                 StartBossBattle();
-                _sequencesBetweenBossfights = 0;
+                _sequencesSinceLastBossFight = 0;
             }
             else
             {
