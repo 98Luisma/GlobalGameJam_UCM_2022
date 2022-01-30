@@ -63,6 +63,11 @@ public class GameManager : MonoBehaviour
         DisplayMoney();
         DisplayScore();
 
+        VolatileStorage.GetInstance().lives = life;
+        VolatileStorage.GetInstance().money = money;
+        VolatileStorage.GetInstance().score = score;
+        VolatileStorage.GetInstance().causeoOfDeath = VolatileStorage.CauseOfDeath.None;
+
         // Spawn the lives images
         _livesDisplay = new List<Image>(_maxLife);
         for (int i=0; i<_maxLife; ++i)
@@ -77,15 +82,25 @@ public class GameManager : MonoBehaviour
         money += amount;
         money = Mathf.Max(0, money);
         DisplayMoney();
+        VolatileStorage.GetInstance().money = money;
+        
+        if (money <= 0)
+        {
+            VolatileStorage.GetInstance().causeoOfDeath = VolatileStorage.CauseOfDeath.Money;
+            KillPlayer();
+        }
     }
 
     public void AddLife(int amount)
     {
         life += amount;
         life = Mathf.Max(0, life);
-        Debug.Log(life);
+        VolatileStorage.GetInstance().lives = life;
+
+        // Debug.Log(life);
         if (life <= 0)
         {
+            VolatileStorage.GetInstance().causeoOfDeath = VolatileStorage.CauseOfDeath.Life;
             KillPlayer();
         }
         else
@@ -105,6 +120,7 @@ public class GameManager : MonoBehaviour
         score += amount;
         score = Mathf.Max(0, score);
         DisplayScore();
+        VolatileStorage.GetInstance().score = score;
     }
 
     public EnemyBullet RequestEnemyBullet()
@@ -114,7 +130,6 @@ public class GameManager : MonoBehaviour
 
     private void KillPlayer()
     {
-        // TODO: Change this?
         UnityEngine.SceneManagement.SceneManager.LoadScene("LoseMenu");
     }
 

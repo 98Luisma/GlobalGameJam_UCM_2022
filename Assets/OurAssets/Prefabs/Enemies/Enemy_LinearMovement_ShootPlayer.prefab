@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 2
   _pointsAwardedOnDeath: 1
-  _moneyAwardedOnDeath: 150
+  _moneyAwardedOnDeath: 75
   _turrets:
   - {fileID: 8202250547016220705}
   _deathParticles: {fileID: 6192724089161036655, guid: 2860523c3a4635747b9a30befca33a89, type: 3}

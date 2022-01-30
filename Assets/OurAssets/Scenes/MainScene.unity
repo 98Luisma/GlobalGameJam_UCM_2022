@@ -663,9 +663,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 216592946973243947, guid: 47ac8083f3e5eb94890d22e6c3176de5, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1268905782}
     - target: {fileID: 216592946973244374, guid: 47ac8083f3e5eb94890d22e6c3176de5, type: 3}
       propertyPath: m_Name
       value: HUD
