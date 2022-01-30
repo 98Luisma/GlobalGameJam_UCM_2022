@@ -85,6 +85,7 @@ MonoBehaviour:
   - {fileID: 2561869458001788756, guid: 12fc162e10a2e8b4d9fb2ce9b2949193, type: 3}
   - {fileID: 2561869458001788756, guid: d0705d3d5f957ef468ebdcc3d7f30959, type: 3}
   - {fileID: 2561869458001788756, guid: d49654abdea24054d820990b0f0fa249, type: 3}
+  - {fileID: 2561869458001788756, guid: 7dfe637b063dd21428f6e0c887f8213c, type: 3}
   _popupColors:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0, g: 1, b: 0, a: 0}
@@ -172,9 +173,18 @@ MonoBehaviour:
   _poolableAudioPrefab: {fileID: 3758834665033418954, guid: 7731c05fdf13c7245bd53fbae29818d5, type: 3}
   gameMusic: {fileID: 8300000, guid: 34abe90740667354caa9ca2dcea4a5b4, type: 3}
   adsMusic: {fileID: 8300000, guid: d6af58ce2f4de134b9890b7d7d36c2d5, type: 3}
-  bulletSFX: {fileID: 0}
-  explosionSFX: {fileID: 0}
-  clicSFX: {fileID: 0}
+  bossMusic: {fileID: 8300000, guid: c02f734f24c77774ba2a0dcf71dd601f, type: 3}
+  popupOpen: {fileID: 0}
+  popupClose: {fileID: 0}
+  popupBuy: {fileID: 8300000, guid: 9a7302817635b7444895faab26642583, type: 3}
+  lifeRestored: {fileID: 8300000, guid: 038014019f9611d43a4e6fc0a9f9b061, type: 3}
+  damaged: {fileID: 8300000, guid: 26b983fa481bb994fa6a1cdf1a056834, type: 3}
+  explosion: {fileID: 8300000, guid: 5807a9eaecd80524e86befdf11ffe3e5, type: 3}
+  enemyDestroyed: {fileID: 8300000, guid: dd5c112a01eefcf4c994f2720e96807c, type: 3}
+  playerBullet: {fileID: 8300000, guid: ff0e13e231f43af4ca5c29f4ee145890, type: 3}
+  enemyBullet: {fileID: 8300000, guid: c0d9aa703af01d845aeaac9e24982967, type: 3}
+  bossBullet: {fileID: 8300000, guid: ad9111edabc9f4840a561c52218b6d41, type: 3}
+  bossTurbines: {fileID: 8300000, guid: f057fae0d21ba394681d0194024a8fd3, type: 3}
   backgroundVol: 0.2
   foregroundVol: 1
   effectsVol: 0
