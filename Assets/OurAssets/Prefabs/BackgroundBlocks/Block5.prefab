@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4684129440311220244}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.5, y: 1, z: 1}
+  m_LocalScale: {x: 4.5, y: 1, z: 1.02}
   m_Children: []
   m_Father: {fileID: 2527453185005645536}
   m_RootOrder: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0195308fe8572a54692ab9a2cdb570aa, type: 2}
+  - {fileID: 2100000, guid: 00206ca9d826bed4aae311c4685fc79a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,6 +211,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (8)
@@ -285,6 +293,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5eb3f6a9ef7db04d8aaf93587081408, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0518724ac7c7324439b8ef697b420dc0, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
       propertyPath: m_Name
       value: monorail_trainBox (1)
@@ -359,6 +379,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (12)
@@ -507,6 +535,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5eb3f6a9ef7db04d8aaf93587081408, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0518724ac7c7324439b8ef697b420dc0, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
       propertyPath: m_Name
       value: monorail_trainBox (3)
@@ -581,6 +621,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (10)
@@ -655,6 +703,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (11)
@@ -729,6 +785,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (13)
@@ -951,6 +1015,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e0c728e6243a934ebeb232400620205, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5eb3f6a9ef7db04d8aaf93587081408, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 5e0c728e6243a934ebeb232400620205, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0518724ac7c7324439b8ef697b420dc0, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 5e0c728e6243a934ebeb232400620205, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e0c728e6243a934ebeb232400620205, type: 3}
       propertyPath: m_Name
       value: monorail_trainFront
@@ -1025,6 +1101,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (15)
@@ -1173,6 +1257,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (7)
@@ -1247,6 +1339,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (14)
@@ -1321,6 +1421,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (6)
@@ -1395,6 +1503,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5eb3f6a9ef7db04d8aaf93587081408, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0518724ac7c7324439b8ef697b420dc0, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
       propertyPath: m_Name
       value: monorail_trainBox (2)
@@ -1469,6 +1589,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5eb3f6a9ef7db04d8aaf93587081408, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0518724ac7c7324439b8ef697b420dc0, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 81b6ac859dc92284da3a445a78f45c99, type: 3}
       propertyPath: m_Name
       value: monorail_trainBox
@@ -1543,6 +1675,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (4)
@@ -1617,6 +1757,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (5)
@@ -1691,6 +1839,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49853f67d28c1164a8c7df2f79a7de07, type: 2}
     - target: {fileID: 919132149155446097, guid: 98c62572f84525641b478a39e9bd31d0, type: 3}
       propertyPath: m_Name
       value: monorail_trackStraight (9)
