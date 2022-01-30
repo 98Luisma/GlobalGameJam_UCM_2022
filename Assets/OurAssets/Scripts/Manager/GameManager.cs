@@ -199,8 +199,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnPopupOpen()
     {
-        _audioManager.ManageAudio(AudioManager.AudioAction.ToBackground, AudioManager.SoundType.Game);
-        _audioManager.ManageAudio(AudioManager.AudioAction.UnMute, AudioManager.SoundType.Ads);
+        
     }
 
     public void OnPopupClosed()

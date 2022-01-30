@@ -38,6 +38,7 @@ public class AudioManager : MonoBehaviour
     
     [SerializeField] [Range(0,1)] private float backgroundVol;
     [SerializeField] [Range(0,1)] private float foregroundVol;
+    [SerializeField] [Range(0,1)] private float effectsVol;
 
     private GameObject audioManagerGO = null;
     private AudioSource asGameMusic;
@@ -69,26 +70,33 @@ public class AudioManager : MonoBehaviour
         asGameMusic = audioManagerGO.AddComponent<AudioSource>();
         asGameMusic.clip = gameMusic;
         asGameMusic.loop = true;
+        asGameMusic.volume = foregroundVol;
+        asGameMusic.playOnAwake = false;
         asGameMusic.Stop();
 
         asAdsMusic = audioManagerGO.AddComponent<AudioSource>();
         asAdsMusic.clip = adsMusic;
         asAdsMusic.loop = true;
+        asAdsMusic.volume = foregroundVol;
+        asAdsMusic.playOnAwake = false;
         asAdsMusic.Stop();
 
         asBulletSFX = audioManagerGO.AddComponent<AudioSource>();
         asBulletSFX.clip = bulletSFX;
         asBulletSFX.loop = false;
+        asBulletSFX.volume = foregroundVol;
         asBulletSFX.Stop();
 
         asExplosionSFX = audioManagerGO.AddComponent<AudioSource>();
         asExplosionSFX.clip = explosionSFX;
         asExplosionSFX.loop = false;
+        asExplosionSFX.volume = foregroundVol;
         asExplosionSFX.Stop();
 
         asClicSFX = audioManagerGO.AddComponent<AudioSource>();
         asClicSFX.clip = clicSFX;
         asClicSFX.loop = false;
+        asClicSFX.volume = foregroundVol;
         asClicSFX.Stop();
 
     }
@@ -105,45 +113,71 @@ public class AudioManager : MonoBehaviour
                 source = asAdsMusic;
                 break;
             case SoundType.Bullet:
-                source = asBulletSFX;
+                source = asAdsMusic; // TEMP
+
+                //bulletSFX.length
+                //source = pull.getNewSource();
+
+                source.clip = bulletSFX;
+                source.loop = false;
+                source.volume = effectsVol;
                 break;
             case SoundType.Explosion:
                 source = asExplosionSFX;
+
+                source.clip = explosionSFX;
+                source.loop = false;
+                source.volume = effectsVol;
                 break;
             case SoundType.Clic:
                 source = asClicSFX;
+
+                source.clip = clicSFX;
+                source.loop = false;
+                source.volume = effectsVol;
                 break;
             
         }
 
-        switch (action)
+        if (type == SoundType.Clic || type == SoundType.Explosion || type == SoundType.Bullet) // Sound Effects (Pull)
         {
-            case AudioAction.Play:
-                source.Play();
-                break;
-            case AudioAction.UnPause:
-                source.UnPause();
-                break;
-            case AudioAction.ToBackground:
-                source.volume = backgroundVol;
-                break;
-            case AudioAction.ToForeground:
-                source.volume = foregroundVol;
-                break;
-            case AudioAction.Mute:
-                source.mute = true;
-                break;
-            case AudioAction.UnMute:
-                source.mute = false;
-                break;
-            case AudioAction.Pause:
-                source.Pause();
-                break;
-            case AudioAction.Stop:
-                source.Stop();
-                break;
-            
-        }
+            switch (action)
+            {
+                case AudioAction.Play:
+                    source.Play();
+                    break;
+            }
+        } else { // Music (Fixed)
+            switch (action)
+            {
+                case AudioAction.Play:
+                    source.Play();
+                    break;
+                case AudioAction.UnPause:
+                    source.UnPause();
+                    break;
+                case AudioAction.ToBackground:
+                    source.volume = backgroundVol;
+                    break;
+                case AudioAction.ToForeground:
+                    source.volume = foregroundVol;
+                    break;
+                case AudioAction.Mute:
+                    source.mute = true;
+                    break;
+                case AudioAction.UnMute:
+                    source.mute = false;
+                    break;
+                case AudioAction.Pause:
+                    source.Pause();
+                    break;
+                case AudioAction.Stop:
+                    source.Stop();
+                    break;
+                
+            }
+        }   
+        
     }
 
 }
