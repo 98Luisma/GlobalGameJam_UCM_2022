@@ -82,7 +82,7 @@ public class AudioManager : MonoBehaviour
         }
         _instance = this;
         // End of singleton implementation
-        _sourcePool = new ObjectPool<PoolableAudio>(_poolableAudioPrefab, 10);
+        _sourcePool = new ObjectPool<PoolableAudio>(_poolableAudioPrefab, 100);
     }
     // Start is called before the first frame update
     void Start()
