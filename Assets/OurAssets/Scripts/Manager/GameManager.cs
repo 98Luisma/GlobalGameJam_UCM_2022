@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     private int money;
     private int score;
     private List<Image> _livesDisplay;
+    float _initMoneyFontSize;
 
     private Coroutine _moneyAnimationCoroutine = null;
 
@@ -55,6 +56,8 @@ public class GameManager : MonoBehaviour
         _instance = this;
         // DontDestroyOnLoad(gameObject);
         // End of singleton implementation
+
+        _initMoneyFontSize = moneyUI.fontSize;
     }
 
     private void Start()
@@ -103,6 +106,8 @@ public class GameManager : MonoBehaviour
             if (_moneyAnimationCoroutine != null)
             {
                 StopCoroutine(_moneyAnimationCoroutine);
+                moneyUI.fontSize = _initMoneyFontSize;
+                moneyUI.color = Color.white;
             }
             _moneyAnimationCoroutine = StartCoroutine(AddMoneyAnimation(true));
         }
@@ -111,6 +116,8 @@ public class GameManager : MonoBehaviour
             if (_moneyAnimationCoroutine != null)
             {
                 StopCoroutine(_moneyAnimationCoroutine);
+                moneyUI.fontSize = _initMoneyFontSize;
+                moneyUI.color = Color.white;
             }
             _moneyAnimationCoroutine = StartCoroutine(AddMoneyAnimation(false));
         }
@@ -128,17 +135,16 @@ public class GameManager : MonoBehaviour
         moneyUI.color = good ? _moneyAnimationGoodColor : _moneyAnimationBadColor;
 
         float timer = 0f;
-        float initFontSize = moneyUI.fontSize;
         while (timer <= _moneyAnimationSeconds)
         {
             float angle = Mathf.PI * timer / _moneyAnimationSeconds;
-            moneyUI.fontSize = initFontSize + 16f * Mathf.Sin(angle);
+            moneyUI.fontSize = _initMoneyFontSize + 16f * Mathf.Sin(angle);
             
             timer += Time.deltaTime;
             yield return null;
         }
 
-        moneyUI.fontSize = initFontSize;
+        moneyUI.fontSize = _initMoneyFontSize;
         moneyUI.color = Color.white;
     }
 

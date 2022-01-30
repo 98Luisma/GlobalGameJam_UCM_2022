@@ -118,7 +118,6 @@ public class AudioManager : MonoBehaviour
 
     public void ManageAudio(AudioAction action, SoundType type)
     {
-        //Debug.Log("ManageAudio with action " + action + " and type " + type + ".");
         AudioSource source = null;
         PoolableAudio audio = _sourcePool.RequestObject();
         switch (type)
