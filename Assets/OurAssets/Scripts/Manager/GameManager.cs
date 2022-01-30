@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
         life += amount;
         life = Mathf.Max(0, life);
-
+        Debug.Log(life);
         if (life <= 0)
         {
             KillPlayer();
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < _maxLife; ++i)
             {
-                if (i < life-1)
+                if (i <= life-1)
                     _livesDisplay[i].color = Color.white;
                 else
                     _livesDisplay[i].color = Color.black;
